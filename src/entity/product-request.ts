@@ -2,7 +2,7 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 't
 import 'reflect-metadata';
 import { TradingPoint } from './trading-point.js';
 import { Employee } from './employee.js';
-import { PROCUREMENT_REQUEST_STATUS_ENUM_NAME, ProcurementRequestStatus } from './enum/procurement_request_status.js';
+import { PRODUCT_REQUEST_STATUS_ENUM_NAME, ProductRequestStatus } from './enum/product-request-status.js';
 
 @Entity({ name: 'product_requests' })
 export class ProductRequest {
@@ -33,10 +33,10 @@ export class ProductRequest {
   @Column({
     name: 'status',
     type: 'enum',
-    enum: ProcurementRequestStatus,
-    enumName: PROCUREMENT_REQUEST_STATUS_ENUM_NAME
+    enum: ProductRequestStatus,
+    enumName: PRODUCT_REQUEST_STATUS_ENUM_NAME
   })
-  status!: ProcurementRequestStatus;
+  status!: ProductRequestStatus;
 
   @Column({
     name: 'notes',
@@ -50,13 +50,13 @@ export class ProductRequest {
     tradingPoint: TradingPoint;
     employee: Employee;
     requestDate?: Date;
-    status?: ProcurementRequestStatus;
+    status?: ProductRequestStatus;
   }) {
     if (data) {
       this.tradingPoint = data.tradingPoint;
       this.employee = data.employee;
       this.requestDate = data.requestDate ?? new Date();
-      this.status = data.status ?? ProcurementRequestStatus.New;
+      this.status = data.status ?? ProductRequestStatus.New;
     }
   }
 }

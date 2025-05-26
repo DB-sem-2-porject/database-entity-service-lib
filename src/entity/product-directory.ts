@@ -1,8 +1,8 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import 'reflect-metadata';
 
-import { PRODUCT_CATEGORY_ENUM_NAME, ProductCategory } from './enum/product_category.js';
-import { MEASUREMENT_TYPE_ENUM_NAME, MeasurementType } from './enum/measurement_type.js';
+import { PRODUCT_CATEGORY_ENUM_NAME, ProductCategory } from './enum/product-category.js';
+import { MEASUREMENT_TYPE_ENUM_NAME, MeasurementType } from './enum/measurement-type.js';
 
 @Entity({ name: 'product_directory' })
 export class ProductDirectory {

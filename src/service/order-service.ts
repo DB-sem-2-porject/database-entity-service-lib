@@ -1,7 +1,7 @@
 import { AppDataSource } from '../data-source.js';
 import { Order } from '../entity/order.js';
 import {Provider} from "../entity/provider.js";
-import {OrderStatus} from "../entity/enum/order_status.js";
+import {OrderStatus} from "../entity/enum/order-status.js";
 
 export class OrderService {
   private repository = AppDataSource.getRepository(Order);

@@ -1,7 +1,7 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import 'reflect-metadata';
 import { Provider } from './provider.js';
-import { ORDER_STATUS_ENUM_NAME, OrderStatus } from './enum/order_status.js';
+import { ORDER_STATUS_ENUM_NAME, OrderStatus } from './enum/order-status.js';
 
 @Entity({ name: 'orders' })
 export class Order {

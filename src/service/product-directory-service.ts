@@ -1,7 +1,7 @@
 import { AppDataSource } from '../data-source.js';
 import { ProductDirectory } from '../entity/product-directory.js';
-import { MeasurementType } from '../entity/enum/measurement_type.js';
-import { ProductCategory } from '../entity/enum/product_category.js';
+import { MeasurementType } from '../entity/enum/measurement-type.js';
+import { ProductCategory } from '../entity/enum/product-category.js';
 
 export class ProductDirectoryService {
   private repository = AppDataSource.getRepository(ProductDirectory);
