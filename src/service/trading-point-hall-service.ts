@@ -1,5 +1,5 @@
-import { AppDataSource } from '../data-source.ts';
-import { TradingPointHall } from '../entity/trading-point-hall.ts';
+import { AppDataSource } from '../data-source.js';
+import { TradingPointHall } from '../entity/trading-point-hall.js';
 
 export class TradingPointHallService {
   private repository = AppDataSource.getRepository(TradingPointHall);

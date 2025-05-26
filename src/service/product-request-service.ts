@@ -1,8 +1,8 @@
-import { AppDataSource } from '../data-source.ts';
-import { ProductRequest } from '../entity/product-request.ts';
-import {TradingPoint} from "../entity/trading-point.ts";
-import {Employee} from "../entity/employee.ts";
-import {ProcurementRequestStatus} from "../entity/enum/procurement_request_status.ts";
+import { AppDataSource } from '../data-source.js';
+import { ProductRequest } from '../entity/product-request.js';
+import {TradingPoint} from "../entity/trading-point.js";
+import {Employee} from "../entity/employee.js";
+import {ProcurementRequestStatus} from "../entity/enum/procurement_request_status.js";
 
 export class ProductRequestService {
   private repository = AppDataSource.getRepository(ProductRequest);

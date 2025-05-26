@@ -1,9 +1,6 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import 'reflect-metadata';
-import { TradingPoint } from './trading-point.ts';
-import { Employee } from './employee.ts';
-import { PROCUREMENT_REQUEST_STATUS_ENUM_NAME, ProcurementRequestStatus } from './enum/procurement_request_status.ts';
-import { ProductRequest } from './product-request.ts';
+import { ProductRequest } from './product-request.js';
 import { ProductDirectory } from './product-directory.js';
 
 @Entity({ name: 'product_request_items' })

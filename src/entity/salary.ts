@@ -1,6 +1,6 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Check } from 'typeorm';
 import 'reflect-metadata';
-import { Employee } from './employee.ts';
+import { Employee } from './employee.js';
 
 @Entity({ name: 'salaries' })
 export class Salary {

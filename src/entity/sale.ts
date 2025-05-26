@@ -1,9 +1,9 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import 'reflect-metadata';
-import { Customer } from './customer.ts';
-import { Employee } from './employee.ts';
-import { TradingPoint } from './trading-point.ts';
-import { PaymentMethod } from './enum/payment-method.ts';
+import { Customer } from './customer.js';
+import { Employee } from './employee.js';
+import { TradingPoint } from './trading-point.js';
+import { PaymentMethod } from './enum/payment-method.js';
 
 
 @Entity({ name: 'sales' })

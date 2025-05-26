@@ -1,7 +1,7 @@
-import { AppDataSource } from '../data-source.ts';
-import { HallsAssignment } from '../entity/halls-assignment.ts';
-import {Employee} from "../entity/employee.ts";
-import {TradingPointHall} from "../entity/trading-point-hall.ts";
+import { AppDataSource } from '../data-source.js';
+import { HallsAssignment } from '../entity/halls-assignment.js';
+import {Employee} from "../entity/employee.js";
+import {TradingPointHall} from "../entity/trading-point-hall.js";
 
 export class HallAssignmentService {
   private repository = AppDataSource.getRepository(HallsAssignment);

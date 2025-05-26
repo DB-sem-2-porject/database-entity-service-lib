@@ -1,5 +1,5 @@
-import { AppDataSource } from '../data-source.ts';
-import { InventoryTransfer } from '../entity/inventory-transfer.ts';
+import { AppDataSource } from '../data-source.js';
+import { InventoryTransfer } from '../entity/inventory-transfer.js';
 import { TransferStatus } from '../entity/enum/transfer-status.js';
 
 

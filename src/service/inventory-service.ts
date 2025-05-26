@@ -1,5 +1,5 @@
-import { AppDataSource } from '../data-source.ts';
-import { Inventory } from '../entity/inventory.ts';
+import { AppDataSource } from '../data-source.js';
+import { Inventory } from '../entity/inventory.js';
 
 export class InventoryService {
   private repository = AppDataSource.getRepository(Inventory);

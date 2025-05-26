@@ -8,14 +8,14 @@
 
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "build",
+    "outDir": "dist", // Ensure output files are placed in the 'dist' directory
 
     /* Bundler mode */
     "moduleResolution": "NodeNext",
-    "allowImportingTsExtensions": true,
+    "allowImportingTsExtensions": false,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
+    "noEmit": false, // Allow TypeScript to emit compiled files
 
     /* Linting */
     "strict": true,
@@ -23,11 +23,8 @@
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
 
-
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
   "include": ["src"]
 }
-
-

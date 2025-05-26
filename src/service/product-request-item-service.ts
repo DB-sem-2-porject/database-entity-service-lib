@@ -1,5 +1,5 @@
-import { AppDataSource } from '../data-source.ts';
-import { ProductRequestItem } from '../entity/product-request-item.ts';
+import { AppDataSource } from '../data-source.js';
+import { ProductRequestItem } from '../entity/product-request-item.js';
 
 export class ProductRequestItemService {
   private repository = AppDataSource.getRepository(ProductRequestItem);

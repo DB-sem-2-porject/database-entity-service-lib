@@ -1,5 +1,5 @@
-import { AppDataSource } from '../data-source.ts';
-import { ProductDirectory } from '../entity/product-directory.ts';
+import { AppDataSource } from '../data-source.js';
+import { ProductDirectory } from '../entity/product-directory.js';
 import { MeasurementType } from '../entity/enum/measurement_type.js';
 import { ProductCategory } from '../entity/enum/product_category.js';
 

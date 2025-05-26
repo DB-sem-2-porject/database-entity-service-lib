@@ -1,5 +1,5 @@
-import { AppDataSource } from '../data-source.ts';
-import { Salary } from '../entity/salary.ts';
+import { AppDataSource } from '../data-source.js';
+import { Salary } from '../entity/salary.js';
 
 export class SalaryService {
   private repository = AppDataSource.getRepository(Salary);

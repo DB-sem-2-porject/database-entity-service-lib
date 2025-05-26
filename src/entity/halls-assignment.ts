@@ -6,7 +6,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 import 'reflect-metadata';
-import { Employee } from './employee.ts';
+import { Employee } from './employee.js';
 import { TradingPointHall } from './trading-point-hall.js';
 
 @Entity({ name: 'halls_assignment' })

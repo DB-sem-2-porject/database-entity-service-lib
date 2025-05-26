@@ -1,6 +1,6 @@
-import { AppDataSource } from '../data-source.ts';
-import { TradingPoint } from '../entity/trading-point.ts';
-import { TradingPointType } from '../entity/enum/trading-point-type.ts';
+import { AppDataSource } from '../data-source.js';
+import { TradingPoint } from '../entity/trading-point.js';
+import { TradingPointType } from '../entity/enum/trading-point-type.js';
 
 export class TradingPointService {
   private repository = AppDataSource.getRepository(TradingPoint);

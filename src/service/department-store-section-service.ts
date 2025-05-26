@@ -1,7 +1,7 @@
-import { AppDataSource } from '../data-source.ts';
-import { DepartmentStoreSection } from '../entity/department-store-section.ts';
+import { AppDataSource } from '../data-source.js';
+import { DepartmentStoreSection } from '../entity/department-store-section.js';
 import { TradingPoint } from '../entity/trading-point.js';
-import { TradingPointType } from '../entity/enum/trading-point-type.ts';
+import { TradingPointType } from '../entity/enum/trading-point-type.js';
 import { Employee } from '../entity/employee.js';
 
 export class DepartmentStoreSectionService {

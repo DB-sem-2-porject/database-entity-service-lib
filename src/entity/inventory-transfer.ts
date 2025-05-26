@@ -1,9 +1,9 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Check } from 'typeorm';
 import 'reflect-metadata';
-import { TradingPoint } from './trading-point.ts';
-import { ProductDirectory } from './product-directory.ts';
-import { Employee } from './employee.ts';
-import {TransferStatus} from './enum/transfer-status.ts';
+import { TradingPoint } from './trading-point.js';
+import { ProductDirectory } from './product-directory.js';
+import { Employee } from './employee.js';
+import {TransferStatus} from './enum/transfer-status.js';
 
 @Entity({ name: 'inventory_transfers' })
 export class InventoryTransfer {

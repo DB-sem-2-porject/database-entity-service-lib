@@ -1,5 +1,5 @@
-import { AppDataSource } from '../data-source.ts';
-import { OrderItem } from '../entity/order-items.ts';
+import { AppDataSource } from '../data-source.js';
+import { OrderItem } from '../entity/order-items.js';
 
 export class OrderItemsService {
   private repository = AppDataSource.getRepository(OrderItem);
