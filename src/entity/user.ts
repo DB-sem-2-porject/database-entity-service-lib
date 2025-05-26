@@ -29,6 +29,13 @@ export class User {
     password!: string;
 
     @Column({
+        name: 'refresh_token',
+        type: 'text',
+        nullable: true
+    })
+    refreshToken?: string;
+
+    @Column({
         name: 'reset_token',
         type: 'text',
         nullable: true
