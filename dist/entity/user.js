@@ -13,6 +13,7 @@ let User = class User {
     id;
     email;
     password;
+    refreshToken;
     resetToken;
     registrationDate;
     lastLogin;
@@ -46,6 +47,14 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], User.prototype, "password", void 0);
+__decorate([
+    Column({
+        name: 'refresh_token',
+        type: 'text',
+        nullable: true
+    }),
+    __metadata("design:type", String)
+], User.prototype, "refreshToken", void 0);
 __decorate([
     Column({
         name: 'reset_token',

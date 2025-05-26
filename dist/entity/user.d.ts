@@ -3,6 +3,7 @@ export declare class User {
     id: number;
     email: string;
     password: string;
+    refreshToken?: string;
     resetToken?: string;
     registrationDate: Date;
     lastLogin?: Date;
