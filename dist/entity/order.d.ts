@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { Provider } from './provider.js';
-import { OrderStatus } from './enum/order_status.js';
+import { OrderStatus } from './enum/order-status.js';
 export declare class Order {
     id: number;
     provider: Provider;

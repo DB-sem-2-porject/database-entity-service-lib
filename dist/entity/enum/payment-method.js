@@ -6,3 +6,4 @@ export var PaymentMethod;
     PaymentMethod["CRYPTO"] = "\u043A\u0440\u0438\u043F\u0442\u0430";
     PaymentMethod["OTHER"] = "\u0434\u0440\u0443\u0433\u043E\u0435";
 })(PaymentMethod || (PaymentMethod = {}));
+export const PAYMENT_METHOD_ENUM_NAME = 'payment_method';

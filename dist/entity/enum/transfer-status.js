@@ -4,3 +4,4 @@ export var TransferStatus;
     TransferStatus["COMPLETED"] = "\u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D";
     TransferStatus["CANCELLED"] = "\u043E\u0442\u043C\u0435\u043D\u0435\u043D";
 })(TransferStatus || (TransferStatus = {}));
+export const TRANSFER_STATUS_ENUM_NAME = 'transfer_status';

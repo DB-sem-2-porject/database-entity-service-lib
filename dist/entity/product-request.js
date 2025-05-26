@@ -11,7 +11,7 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 't
 import 'reflect-metadata';
 import { TradingPoint } from './trading-point.js';
 import { Employee } from './employee.js';
-import { PROCUREMENT_REQUEST_STATUS_ENUM_NAME, ProcurementRequestStatus } from './enum/procurement_request_status.js';
+import { PRODUCT_REQUEST_STATUS_ENUM_NAME, ProductRequestStatus } from './enum/product-request-status.js';
 let ProductRequest = class ProductRequest {
     id;
     tradingPoint;
@@ -24,7 +24,7 @@ let ProductRequest = class ProductRequest {
             this.tradingPoint = data.tradingPoint;
             this.employee = data.employee;
             this.requestDate = data.requestDate ?? new Date();
-            this.status = data.status ?? ProcurementRequestStatus.New;
+            this.status = data.status ?? ProductRequestStatus.New;
         }
     }
 };
@@ -61,8 +61,8 @@ __decorate([
     Column({
         name: 'status',
         type: 'enum',
-        enum: ProcurementRequestStatus,
-        enumName: PROCUREMENT_REQUEST_STATUS_ENUM_NAME
+        enum: ProductRequestStatus,
+        enumName: PRODUCT_REQUEST_STATUS_ENUM_NAME
     }),
     __metadata("design:type", String)
 ], ProductRequest.prototype, "status", void 0);

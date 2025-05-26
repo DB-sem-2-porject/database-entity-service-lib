@@ -1,6 +1,6 @@
 import 'reflect-metadata';
-import { ProductCategory } from './enum/product_category.js';
-import { MeasurementType } from './enum/measurement_type.js';
+import { ProductCategory } from './enum/product-category.js';
+import { MeasurementType } from './enum/measurement-type.js';
 export declare class ProductDirectory {
     id: number;
     name: string;

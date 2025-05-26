@@ -9,8 +9,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import 'reflect-metadata';
-import { PRODUCT_CATEGORY_ENUM_NAME, ProductCategory } from './enum/product_category.js';
-import { MEASUREMENT_TYPE_ENUM_NAME, MeasurementType } from './enum/measurement_type.js';
+import { PRODUCT_CATEGORY_ENUM_NAME, ProductCategory } from './enum/product-category.js';
+import { MEASUREMENT_TYPE_ENUM_NAME, MeasurementType } from './enum/measurement-type.js';
 let ProductDirectory = class ProductDirectory {
     id;
     name;
