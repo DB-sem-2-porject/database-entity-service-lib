@@ -10,7 +10,7 @@ import { Employee } from './employee.js';
 import { TradingPointHall } from './trading-point-hall.js';
 
 @Entity({ name: 'halls_assignment' })
-export class HallsAssignment {
+export class HallAssignment {
   @PrimaryGeneratedColumn()
   id!: number;
 

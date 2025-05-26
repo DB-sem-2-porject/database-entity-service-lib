@@ -7,3 +7,5 @@ export enum PaymentMethod {
     CRYPTO = 'крипта',
     OTHER = 'другое'
 }
+
+export const PAYMENT_METHOD_ENUM_NAME = 'payment_method';
