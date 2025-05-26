@@ -1,8 +1,14 @@
-import { AppDataSource } from '../data-source.js';
 import { ProductRequestItem } from '../entity/product-request-item.js';
+import {DataSource, Repository} from "typeorm";
 
 export class ProductRequestItemService {
-  private repository = AppDataSource.getRepository(ProductRequestItem);
+  private dataSource: DataSource;
+  private repository : Repository<ProductRequestItem>;
+
+  constructor(dataSource: DataSource) {
+    this.dataSource = dataSource;
+    this.repository = this.dataSource.getRepository(ProductRequestItem);
+    }
   
   async createRequestItem(data: {
     requestId: number;

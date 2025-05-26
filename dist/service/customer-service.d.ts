@@ -1,6 +1,9 @@
 import { Customer } from '../entity/customer.js';
+import { DataSource } from "typeorm";
 export declare class CustomerService {
+    private dataSource;
     private repository;
+    constructor(dataSource: DataSource);
     createCustomer(data: {
         fullName: string;
         phoneNumber?: string;

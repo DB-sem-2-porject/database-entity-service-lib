@@ -1,8 +1,14 @@
-import { AppDataSource } from '../data-source.js';
 import { Inventory } from '../entity/inventory.js';
+import {DataSource, Repository} from "typeorm";
 
 export class InventoryService {
-  private repository = AppDataSource.getRepository(Inventory);
+  private dataSource: DataSource;
+  private repository : Repository<Inventory>;
+
+  constructor(dataSource: DataSource) {
+    this.dataSource = dataSource;
+    this.repository = this.dataSource.getRepository(Inventory);
+  }
   
   async createInventory(data: {
     tradingPointId: number;

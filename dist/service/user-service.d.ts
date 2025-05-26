@@ -1,6 +1,9 @@
 import { User } from '../entity/user.js';
+import { DataSource } from "typeorm";
 export declare class UserService {
+    private dataSource;
     private repository;
+    constructor(dataSource: DataSource);
     createUser(data: {
         username: string;
         email: string;

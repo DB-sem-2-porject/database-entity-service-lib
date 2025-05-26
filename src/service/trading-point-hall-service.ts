@@ -1,8 +1,14 @@
-import { AppDataSource } from '../data-source.js';
 import { TradingPointHall } from '../entity/trading-point-hall.js';
+import {DataSource, Repository} from "typeorm";
 
 export class TradingPointHallService {
-  private repository = AppDataSource.getRepository(TradingPointHall);
+  private dataSource: DataSource;
+  private repository : Repository<TradingPointHall>;
+
+  constructor(dataSource: DataSource) {
+    this.dataSource = dataSource;
+    this.repository = this.dataSource.getRepository(TradingPointHall);
+  }
   
   async createHall(data: {
     tradingPointId: number;

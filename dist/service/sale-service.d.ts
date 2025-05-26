@@ -1,6 +1,9 @@
 import { Sale } from '../entity/sale.js';
+import { DataSource } from "typeorm";
 export declare class SaleService {
+    private dataSource;
     private repository;
+    constructor(dataSource: DataSource);
     createSale(data: {
         tradingPointId: number;
         employeeId: number;

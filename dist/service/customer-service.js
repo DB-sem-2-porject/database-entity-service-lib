@@ -1,7 +1,11 @@
-import { AppDataSource } from '../data-source.js';
 import { Customer } from '../entity/customer.js';
 export class CustomerService {
-    repository = AppDataSource.getRepository(Customer);
+    dataSource;
+    repository;
+    constructor(dataSource) {
+        this.dataSource = dataSource;
+        this.repository = this.dataSource.getRepository(Customer);
+    }
     async createCustomer(data) {
         const customer = this.repository.create(data);
         return this.repository.save(customer);

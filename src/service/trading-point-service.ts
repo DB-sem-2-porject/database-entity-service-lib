@@ -1,9 +1,15 @@
-import { AppDataSource } from '../data-source.js';
 import { TradingPoint } from '../entity/trading-point.js';
 import { TradingPointType } from '../entity/enum/trading-point-type.js';
+import {DataSource, Repository} from "typeorm";
 
 export class TradingPointService {
-  private repository = AppDataSource.getRepository(TradingPoint);
+  private dataSource: DataSource;
+  private repository : Repository<TradingPoint>;
+
+  constructor(dataSource: DataSource) {
+    this.dataSource = dataSource;
+    this.repository = this.dataSource.getRepository(TradingPoint);
+  }
   
   async createTradingPoint(data: {
     type: TradingPointType;

@@ -1,6 +1,9 @@
 import { Inventory } from '../entity/inventory.js';
+import { DataSource } from "typeorm";
 export declare class InventoryService {
+    private dataSource;
     private repository;
+    constructor(dataSource: DataSource);
     createInventory(data: {
         tradingPointId: number;
         productId: number;

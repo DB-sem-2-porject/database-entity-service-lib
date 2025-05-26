@@ -1,8 +1,14 @@
-import { AppDataSource } from '../data-source.js';
 import { Provider } from '../entity/provider.js';
+import {DataSource, Repository} from "typeorm";
 
 export class ProviderService {
-  private repository = AppDataSource.getRepository(Provider);
+  private dataSource: DataSource;
+  private repository : Repository<Provider>;
+
+  constructor(dataSource: DataSource) {
+    this.dataSource = dataSource;
+    this.repository = this.dataSource.getRepository(Provider);
+  }
   
   async createProvider(data: {
     name: string;

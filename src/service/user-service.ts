@@ -1,8 +1,14 @@
-import { AppDataSource } from '../data-source.js';
 import { User } from '../entity/user.js';
+import {DataSource, Repository} from "typeorm";
 
 export class UserService {
-  private repository = AppDataSource.getRepository(User);
+  private dataSource: DataSource;
+  private repository : Repository<User>;
+
+  constructor(dataSource: DataSource) {
+    this.dataSource = dataSource;
+    this.repository = this.dataSource.getRepository(User);
+  }
   
   async createUser(data: {
     username: string;

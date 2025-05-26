@@ -1,8 +1,14 @@
-import { AppDataSource } from '../data-source.js';
 import { Employee } from '../entity/employee.js';
+import {DataSource, Repository} from "typeorm";
 
 export class EmployeeService {
-  private repository = AppDataSource.getRepository(Employee);
+  private dataSource: DataSource;
+  private repository : Repository<Employee>;
+
+  constructor(dataSource: DataSource) {
+    this.dataSource = dataSource;
+    this.repository = this.dataSource.getRepository(Employee);
+  }
   
   async createEmployee(data: {
     firstName: string;

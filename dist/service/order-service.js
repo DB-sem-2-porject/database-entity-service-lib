@@ -1,7 +1,11 @@
-import { AppDataSource } from '../data-source.js';
 import { Order } from '../entity/order.js';
 export class OrderService {
-    repository = AppDataSource.getRepository(Order);
+    dataSource;
+    repository;
+    constructor(dataSource) {
+        this.dataSource = dataSource;
+        this.repository = this.dataSource.getRepository(Order);
+    }
     async createOrder(data) {
         const order = this.repository.create({
             ...data,

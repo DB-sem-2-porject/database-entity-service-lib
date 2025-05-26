@@ -1,10 +1,16 @@
-import { AppDataSource } from '../data-source.js';
 import { InventoryTransfer } from '../entity/inventory-transfer.js';
 import { TransferStatus } from '../entity/enum/transfer-status.js';
+import {DataSource, Repository} from "typeorm";
 
 
 export class InventoryTransferService {
-  private repository = AppDataSource.getRepository(InventoryTransfer);
+  private dataSource: DataSource;
+  private repository : Repository<InventoryTransfer>;
+
+  constructor(dataSource: DataSource) {
+    this.dataSource = dataSource;
+    this.repository = this.dataSource.getRepository(InventoryTransfer);
+  }
   
   async createTransfer(data: {
     sourcePointId: number;

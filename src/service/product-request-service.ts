@@ -1,11 +1,17 @@
-import { AppDataSource } from '../data-source.js';
 import { ProductRequest } from '../entity/product-request.js';
 import {TradingPoint} from "../entity/trading-point.js";
 import {Employee} from "../entity/employee.js";
 import {ProductRequestStatus} from "../entity/enum/product-request-status.js";
+import {DataSource, Repository} from "typeorm";
 
 export class ProductRequestService {
-  private repository = AppDataSource.getRepository(ProductRequest);
+  private dataSource: DataSource;
+  private repository : Repository<ProductRequest>;
+
+  constructor(dataSource: DataSource) {
+    this.dataSource = dataSource;
+    this.repository = this.dataSource.getRepository(ProductRequest);
+  }
   
   async createRequest(data: {
     tradingPoint: TradingPoint;

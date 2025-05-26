@@ -1,7 +1,10 @@
 import { InventoryTransfer } from '../entity/inventory-transfer.js';
 import { TransferStatus } from '../entity/enum/transfer-status.js';
+import { DataSource } from "typeorm";
 export declare class InventoryTransferService {
+    private dataSource;
     private repository;
+    constructor(dataSource: DataSource);
     createTransfer(data: {
         sourcePointId: number;
         destinationPointId: number;

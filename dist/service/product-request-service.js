@@ -1,7 +1,11 @@
-import { AppDataSource } from '../data-source.js';
 import { ProductRequest } from '../entity/product-request.js';
 export class ProductRequestService {
-    repository = AppDataSource.getRepository(ProductRequest);
+    dataSource;
+    repository;
+    constructor(dataSource) {
+        this.dataSource = dataSource;
+        this.repository = this.dataSource.getRepository(ProductRequest);
+    }
     async createRequest(data) {
         // const request = this.repository.create({
         //   ...data,

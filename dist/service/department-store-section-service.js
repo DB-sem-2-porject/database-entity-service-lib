@@ -1,10 +1,15 @@
-import { AppDataSource } from '../data-source.js';
 import { DepartmentStoreSection } from '../entity/department-store-section.js';
 import { TradingPoint } from '../entity/trading-point.js';
 import { TradingPointType } from '../entity/enum/trading-point-type.js';
 export class DepartmentStoreSectionService {
-    repository = AppDataSource.getRepository(DepartmentStoreSection);
-    tradingPointsRepository = AppDataSource.getRepository(TradingPoint);
+    dataSource;
+    repository;
+    tradingPointsRepository;
+    constructor(dataSource) {
+        this.dataSource = dataSource;
+        this.repository = this.dataSource.getRepository(DepartmentStoreSection);
+        this.tradingPointsRepository = this.dataSource.getRepository(TradingPoint);
+    }
     async createSection(data) {
         const tradingPoint = await this.tradingPointsRepository.findOneByOrFail({ id: data.tradingPointId });
         if (tradingPoint.type !== TradingPointType.DepartmentStore) {

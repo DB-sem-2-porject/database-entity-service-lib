@@ -1,8 +1,14 @@
-import { AppDataSource } from '../data-source.js';
 import { ProviderProductList } from '../entity/provider-product-list.js';
+import {DataSource, Repository} from "typeorm";
 
 export class ProvideProductListService {
-  private repository = AppDataSource.getRepository(ProviderProductList);
+  private dataSource: DataSource;
+  private repository : Repository<ProviderProductList>;
+
+  constructor(dataSource: DataSource) {
+    this.dataSource = dataSource;
+    this.repository = this.dataSource.getRepository(ProviderProductList);
+  }
   
   async createProductList(data: {
     providerId: number;
