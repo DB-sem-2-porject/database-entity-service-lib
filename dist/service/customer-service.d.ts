@@ -11,6 +11,14 @@ export declare class CustomerService {
         birthday?: string;
         notes?: string;
     }): Promise<Customer>;
+    readCustomer(id: number): Promise<Customer | null>;
+    readAllCustomers(): Promise<Customer[]>;
+    updateCustomer(id: number, data: {
+        fullName?: string;
+        phoneNumber?: string;
+        birthday?: string;
+        notes?: string;
+    }): Promise<Customer | null>;
     deleteCustomer(data: {
         id: number;
     }): Promise<void>;
