@@ -1,26 +1,9 @@
 import { OrderItem } from '../entity/order-items.js';
-import {DataSource, Repository} from "typeorm";
+import {DataSource} from "typeorm";
+import {BaseService} from "../base-service.js";
 
-export class OrderItemsService {
-  private dataSource: DataSource;
-  private repository : Repository<OrderItem>;
-
+export class OrderItemsService extends BaseService<OrderItem> {
   constructor(dataSource: DataSource) {
-    this.dataSource = dataSource;
-    this.repository = this.dataSource.getRepository(OrderItem);
-  }
-  
-  async createOrderItem(data: {
-    orderId: number;
-    productId: number;
-    quantity: number;
-    price: number;
-  }): Promise<OrderItem> {
-    const orderItem = this.repository.create(data);
-    return this.repository.save(orderItem);
-  }
-  
-  async deleteOrderItem(id: number): Promise<void> {
-    await this.repository.delete(id);
+    super(dataSource, OrderItem);
   }
 }

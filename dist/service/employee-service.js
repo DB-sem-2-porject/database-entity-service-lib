@@ -1,16 +1,7 @@
 import { Employee } from '../entity/employee.js';
-export class EmployeeService {
-    dataSource;
-    repository;
+import { BaseService } from "../base-service.js";
+export class EmployeeService extends BaseService {
     constructor(dataSource) {
-        this.dataSource = dataSource;
-        this.repository = this.dataSource.getRepository(Employee);
-    }
-    async createEmployee(data) {
-        const employee = this.repository.create(data);
-        return this.repository.save(employee);
-    }
-    async deleteEmployee(data) {
-        await this.repository.delete(data);
+        super(dataSource, Employee);
     }
 }

@@ -1,15 +1,9 @@
 import { DepartmentStoreSection } from '../entity/department-store-section.js';
-import { DataSource } from "typeorm";
-export declare class DepartmentStoreSectionService {
-    private dataSource;
-    private repository;
+import { BaseService } from '../base-service.js';
+import { DataSource, DeepPartial } from 'typeorm';
+export declare class DepartmentStoreSectionService extends BaseService<DepartmentStoreSection> {
     private tradingPointsRepository;
     constructor(dataSource: DataSource);
-    createSection(data: {
-        tradingPointId: number;
-        name: string;
-        floorNumber: number;
-        managerId?: number;
-    }): Promise<DepartmentStoreSection>;
+    create(data: DeepPartial<DepartmentStoreSection>): Promise<DepartmentStoreSection>;
 }
 //# sourceMappingURL=department-store-section-service.d.ts.map

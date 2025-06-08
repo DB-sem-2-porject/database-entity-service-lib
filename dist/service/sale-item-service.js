@@ -1,16 +1,7 @@
 import { SaleItem } from '../entity/sale-item.js';
-export class SaleItemService {
-    dataSource;
-    repository;
+import { BaseService } from "../base-service.js";
+export class SaleItemService extends BaseService {
     constructor(dataSource) {
-        this.dataSource = dataSource;
-        this.repository = this.dataSource.getRepository(SaleItem);
-    }
-    async createSaleItem(data) {
-        const saleItem = this.repository.create(data);
-        return this.repository.save(saleItem);
-    }
-    async deleteSaleItem(data) {
-        await this.repository.delete(data.id);
+        super(dataSource, SaleItem);
     }
 }

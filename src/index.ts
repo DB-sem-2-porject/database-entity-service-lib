@@ -1,3 +1,7 @@
+import {BaseService} from "./base-service.js";
+import {CustomerService} from "./service/customer-service.js";
+import {DataSource} from "typeorm";
+import {Customer} from "./entity/customer.js";
 
 export {EmployeeRole, EMPLOYEE_ROLE_ENUM_NAME} from './entity/enum/employee-role.js'
 export {MeasurementType, MEASUREMENT_TYPE_ENUM_NAME} from './entity/enum/measurement-type.js'
@@ -48,3 +52,22 @@ export {TradingPointHallService} from './service/trading-point-hall-service.js'
 export {TradingPointService} from './service/trading-point-service.js'
 export {UserService} from './service/user-service.js'
 
+// const dataSource = new DataSource({
+//     // required DataSource configuration
+//     type: "postgres", // or your database type
+//     host: "localhost",
+//     port: 5432,
+//     username: "username",
+//     password: "password",
+//     database: "database",
+//     entities: [Customer], // add your entity
+// });
+//
+// // Initialize the data source first
+// await dataSource.initialize();
+//
+// // Then create the service
+// const customerService: CustomerService = new CustomerService(dataSource);
+//
+// let service: BaseService<Customer> = new CustomerService(dataSource);
+// service.delete({id: 1}).then(() => {});

@@ -44,3 +44,22 @@ export { SaleService } from './service/sale-service.js';
 export { TradingPointHallService } from './service/trading-point-hall-service.js';
 export { TradingPointService } from './service/trading-point-service.js';
 export { UserService } from './service/user-service.js';
+// const dataSource = new DataSource({
+//     // required DataSource configuration
+//     type: "postgres", // or your database type
+//     host: "localhost",
+//     port: 5432,
+//     username: "username",
+//     password: "password",
+//     database: "database",
+//     entities: [Customer], // add your entity
+// });
+//
+// // Initialize the data source first
+// await dataSource.initialize();
+//
+// // Then create the service
+// const customerService: CustomerService = new CustomerService(dataSource);
+//
+// let service: BaseService<Customer> = new CustomerService(dataSource);
+// service.delete({id: 1}).then(() => {});
