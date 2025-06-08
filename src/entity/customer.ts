@@ -1,12 +1,15 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import 'reflect-metadata';
+import { ObjectType, Field, ID } from 'type-graphql';
 
+@ObjectType() // Говорим, что это GraphQL тип
 @Entity({ name: 'customers' })
 export class Customer {
+  @Field(() => ID) // GraphQL поле с типом ID
   @PrimaryGeneratedColumn()
   id!: number;
 
-
+  @Field() // Обязательное поле GraphQL String
   @Column({
     name: 'full_name',
     type: 'varchar',
@@ -14,7 +17,7 @@ export class Customer {
   })
   fullName!: string;
 
-
+  @Field({ nullable: true }) // Необязательное поле GraphQL String или null
   @Column({
     name: 'phone_number',
     type: 'varchar',
@@ -22,6 +25,7 @@ export class Customer {
   })
   phoneNumber?: string;
 
+  @Field({ nullable: true })
   @Column({
     name: 'registration_date',
     type: 'timestamp',
@@ -30,6 +34,7 @@ export class Customer {
   })
   registrationDate?: string;
 
+  @Field({ nullable: true })
   @Column({
     name: 'birthday',
     type: 'date',
@@ -37,6 +42,7 @@ export class Customer {
   })
   birthday?: string;
 
+  @Field({ nullable: true })
   @Column({
     name: 'notes',
     type: 'text',
