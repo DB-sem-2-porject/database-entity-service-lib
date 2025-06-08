@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import 'reflect-metadata';
+import { ObjectType, Field, ID } from 'type-graphql';
 let Customer = class Customer {
     id;
     fullName;
@@ -27,10 +28,14 @@ let Customer = class Customer {
     }
 };
 __decorate([
+    Field(() => ID) // GraphQL поле с типом ID
+    ,
     PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
 ], Customer.prototype, "id", void 0);
 __decorate([
+    Field() // Обязательное поле GraphQL String
+    ,
     Column({
         name: 'full_name',
         type: 'varchar',
@@ -39,6 +44,8 @@ __decorate([
     __metadata("design:type", String)
 ], Customer.prototype, "fullName", void 0);
 __decorate([
+    Field({ nullable: true }) // Необязательное поле GraphQL String или null
+    ,
     Column({
         name: 'phone_number',
         type: 'varchar',
@@ -47,6 +54,7 @@ __decorate([
     __metadata("design:type", String)
 ], Customer.prototype, "phoneNumber", void 0);
 __decorate([
+    Field({ nullable: true }),
     Column({
         name: 'registration_date',
         type: 'timestamp',
@@ -56,6 +64,7 @@ __decorate([
     __metadata("design:type", String)
 ], Customer.prototype, "registrationDate", void 0);
 __decorate([
+    Field({ nullable: true }),
     Column({
         name: 'birthday',
         type: 'date',
@@ -64,6 +73,7 @@ __decorate([
     __metadata("design:type", String)
 ], Customer.prototype, "birthday", void 0);
 __decorate([
+    Field({ nullable: true }),
     Column({
         name: 'notes',
         type: 'text',
@@ -72,6 +82,8 @@ __decorate([
     __metadata("design:type", String)
 ], Customer.prototype, "notes", void 0);
 Customer = __decorate([
+    ObjectType() // Говорим, что это GraphQL тип
+    ,
     Entity({ name: 'customers' }),
     __metadata("design:paramtypes", [Object])
 ], Customer);
