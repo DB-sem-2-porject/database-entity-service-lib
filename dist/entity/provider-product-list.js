@@ -11,6 +11,7 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 't
 import 'reflect-metadata';
 import { Provider } from './provider.js';
 import { ProductDirectory } from './product-directory.js';
+import { Field, ID, ObjectType } from "type-graphql";
 let ProviderProductList = class ProviderProductList {
     id;
     provider;
@@ -33,10 +34,12 @@ let ProviderProductList = class ProviderProductList {
     }
 };
 __decorate([
+    Field(() => ID),
     PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
 ], ProviderProductList.prototype, "id", void 0);
 __decorate([
+    Field(),
     ManyToOne(() => Provider),
     JoinColumn({
         name: 'provider_id',
@@ -44,11 +47,15 @@ __decorate([
     __metadata("design:type", Provider)
 ], ProviderProductList.prototype, "provider", void 0);
 __decorate([
+    Field(),
     ManyToOne(() => ProductDirectory),
-    JoinColumn({ name: 'product_id' }),
+    JoinColumn({
+        name: 'product_id'
+    }),
     __metadata("design:type", ProductDirectory)
 ], ProviderProductList.prototype, "product", void 0);
 __decorate([
+    Field(),
     Column({
         type: 'numeric',
         precision: 12,
@@ -57,6 +64,7 @@ __decorate([
     __metadata("design:type", Number)
 ], ProviderProductList.prototype, "price", void 0);
 __decorate([
+    Field(),
     Column({
         type: 'int',
         default: 1
@@ -64,6 +72,7 @@ __decorate([
     __metadata("design:type", Number)
 ], ProviderProductList.prototype, "minOrderQuantity", void 0);
 __decorate([
+    Field(),
     Column({
         type: 'boolean',
         default: true
@@ -71,6 +80,7 @@ __decorate([
     __metadata("design:type", Boolean)
 ], ProviderProductList.prototype, "active", void 0);
 __decorate([
+    Field(),
     Column({
         type: 'timestamp',
         default: () => 'now()'
@@ -78,6 +88,7 @@ __decorate([
     __metadata("design:type", Date)
 ], ProviderProductList.prototype, "lastUpdate", void 0);
 ProviderProductList = __decorate([
+    ObjectType(),
     Entity({ name: 'providers_product_list' }),
     __metadata("design:paramtypes", [Object])
 ], ProviderProductList);

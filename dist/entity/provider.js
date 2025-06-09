@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Entity, PrimaryGeneratedColumn, Column, } from 'typeorm';
 import 'reflect-metadata';
+import { Field, ID, ObjectType } from "type-graphql";
 let Provider = class Provider {
     id;
     name;
@@ -31,14 +32,21 @@ let Provider = class Provider {
     }
 };
 __decorate([
+    Field(() => ID),
     PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
 ], Provider.prototype, "id", void 0);
 __decorate([
-    Column({ name: 'name', type: 'varchar', length: 100 }),
+    Field(),
+    Column({
+        name: 'name',
+        type: 'varchar',
+        length: 100
+    }),
     __metadata("design:type", String)
 ], Provider.prototype, "name", void 0);
 __decorate([
+    Field({ nullable: true }),
     Column({
         name: 'phone',
         type: 'varchar',
@@ -48,6 +56,7 @@ __decorate([
     __metadata("design:type", String)
 ], Provider.prototype, "phone", void 0);
 __decorate([
+    Field({ nullable: true }),
     Column({
         name: 'email',
         type: 'varchar',
@@ -57,12 +66,15 @@ __decorate([
     __metadata("design:type", String)
 ], Provider.prototype, "email", void 0);
 __decorate([
+    Field({ nullable: true }),
     Column({
-        type: 'text'
+        type: 'text',
+        nullable: true
     }),
     __metadata("design:type", String)
 ], Provider.prototype, "address", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'active',
         type: 'boolean',
@@ -71,6 +83,7 @@ __decorate([
     __metadata("design:type", Boolean)
 ], Provider.prototype, "active", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'registration_date',
         type: 'date',
@@ -79,6 +92,7 @@ __decorate([
     __metadata("design:type", Date)
 ], Provider.prototype, "registrationDate", void 0);
 Provider = __decorate([
+    ObjectType(),
     Entity({ name: 'providers' }),
     __metadata("design:paramtypes", [Object])
 ], Provider);

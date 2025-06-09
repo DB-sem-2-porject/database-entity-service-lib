@@ -2,12 +2,16 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 't
 import 'reflect-metadata';
 import { Provider } from './provider.js';
 import { ORDER_STATUS_ENUM_NAME, OrderStatus } from './enum/order-status.js';
+import {Field, ID, ObjectType} from "type-graphql";
 
+@ObjectType()
 @Entity({ name: 'orders' })
 export class Order {
+  @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;
 
+  @Field()
   @ManyToOne(() => Provider, { nullable: false })
   @JoinColumn({
     name: 'provider_id',
@@ -15,6 +19,7 @@ export class Order {
   })
   provider!: Provider;
 
+  @Field()
   @Column({
     name: 'order_date',
     type: 'timestamp',
@@ -23,6 +28,7 @@ export class Order {
   })
   orderDate?: Date;
 
+  @Field()
   @Column({
     name: 'status',
     type: 'enum',
@@ -31,6 +37,7 @@ export class Order {
   })
   status!: OrderStatus;
 
+  @Field()
   @Column({
     name: 'total_cost',
     type: 'numeric',
@@ -39,6 +46,7 @@ export class Order {
   })
   totalCost!: number;
 
+  @Field({ nullable: true })
   @Column({
     name: 'notes',
     type: 'text',

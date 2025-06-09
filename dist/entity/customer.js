@@ -54,7 +54,7 @@ __decorate([
     __metadata("design:type", String)
 ], Customer.prototype, "phoneNumber", void 0);
 __decorate([
-    Field({ nullable: true }),
+    Field(),
     Column({
         name: 'registration_date',
         type: 'timestamp',

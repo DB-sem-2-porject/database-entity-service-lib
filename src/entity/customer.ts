@@ -25,7 +25,7 @@ export class Customer {
   })
   phoneNumber?: string;
 
-  @Field({ nullable: true })
+  @Field()
   @Column({
     name: 'registration_date',
     type: 'timestamp',

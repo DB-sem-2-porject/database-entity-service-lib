@@ -1,12 +1,16 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Check } from 'typeorm';
 import 'reflect-metadata';
 import { Employee } from './employee.js';
+import {Field, ID, ObjectType} from "type-graphql";
 
+@ObjectType()
 @Entity({ name: 'salaries' })
 export class Salary {
+    @Field(() => ID)
     @PrimaryGeneratedColumn()
     id!: number;
 
+    @Field()
     @Column({
         name: 'employee_id',
         type: 'int',
@@ -14,10 +18,14 @@ export class Salary {
     })
     employeeId!: number;
 
+    @Field()
     @ManyToOne(() => Employee)
-    @JoinColumn({ name: 'employee_id' })
+    @JoinColumn({
+        name: 'employee_id'
+    })
     employee!: Employee;
 
+    @Field()
     @Column({
         name: 'period_start',
         type: 'date',
@@ -25,6 +33,7 @@ export class Salary {
     })
     periodStart!: Date;
 
+    @Field()
     @Column({
         name: 'period_end',
         type: 'date',
@@ -33,6 +42,7 @@ export class Salary {
     @Check('valid_period', 'period_end >= period_start')
     periodEnd!: Date;
 
+    @Field()
     @Column({
         name: 'base_amount',
         type: 'numeric',
@@ -42,6 +52,7 @@ export class Salary {
     })
     baseAmount!: number;
 
+    @Field()
     @Column({
         name: 'bonus',
         type: 'numeric',
@@ -51,6 +62,7 @@ export class Salary {
     })
     bonus!: number;
 
+    @Field()
     @Column({
         name: 'tax',
         type: 'numeric',
@@ -60,6 +72,7 @@ export class Salary {
     })
     tax!: number;
 
+    @Field()
     @Column({
         name: 'total_paid',
         type: 'numeric',
@@ -69,6 +82,7 @@ export class Salary {
     })
     totalPaid!: number;
 
+    @Field()
     @Column({
         name: 'payment_date',
         type: 'date',

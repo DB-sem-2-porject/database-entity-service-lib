@@ -11,6 +11,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import 'reflect-metadata';
 import { PRODUCT_CATEGORY_ENUM_NAME, ProductCategory } from './enum/product-category.js';
 import { MEASUREMENT_TYPE_ENUM_NAME, MeasurementType } from './enum/measurement-type.js';
+import { Field, ID, ObjectType } from "type-graphql";
 let ProductDirectory = class ProductDirectory {
     id;
     name;
@@ -32,10 +33,12 @@ let ProductDirectory = class ProductDirectory {
     }
 };
 __decorate([
+    Field(() => ID),
     PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
 ], ProductDirectory.prototype, "id", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'name',
         type: 'varchar',
@@ -45,6 +48,7 @@ __decorate([
     __metadata("design:type", String)
 ], ProductDirectory.prototype, "name", void 0);
 __decorate([
+    Field({ nullable: true }),
     Column({
         name: 'description',
         type: 'text',
@@ -53,6 +57,7 @@ __decorate([
     __metadata("design:type", String)
 ], ProductDirectory.prototype, "description", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'category',
         type: 'enum',
@@ -62,6 +67,7 @@ __decorate([
     __metadata("design:type", String)
 ], ProductDirectory.prototype, "category", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'measurement',
         type: 'enum',
@@ -71,6 +77,7 @@ __decorate([
     __metadata("design:type", String)
 ], ProductDirectory.prototype, "measurement", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'created_at',
         type: 'date',
@@ -79,6 +86,7 @@ __decorate([
     __metadata("design:type", Date)
 ], ProductDirectory.prototype, "createdAt", void 0);
 ProductDirectory = __decorate([
+    ObjectType(),
     Entity({ name: 'product_directory' }),
     __metadata("design:paramtypes", [Object])
 ], ProductDirectory);

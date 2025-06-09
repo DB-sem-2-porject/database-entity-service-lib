@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Entity, PrimaryGeneratedColumn, Column, } from 'typeorm';
 import 'reflect-metadata';
 import { TradingPointType } from './enum/trading-point-type.js';
+import { Field, ID, ObjectType } from "type-graphql";
 let TradingPoint = class TradingPoint {
     id;
     name;
@@ -38,14 +39,21 @@ let TradingPoint = class TradingPoint {
     }
 };
 __decorate([
+    Field(() => ID),
     PrimaryGeneratedColumn({ type: 'int', name: 'id' }),
     __metadata("design:type", Number)
 ], TradingPoint.prototype, "id", void 0);
 __decorate([
-    Column({ type: 'varchar', length: 100, unique: true }),
+    Field(),
+    Column({
+        type: 'varchar',
+        length: 100,
+        unique: true
+    }),
     __metadata("design:type", String)
 ], TradingPoint.prototype, "name", void 0);
 __decorate([
+    Field(),
     Column({
         type: 'enum',
         enum: TradingPointType,
@@ -53,10 +61,14 @@ __decorate([
     __metadata("design:type", String)
 ], TradingPoint.prototype, "type", void 0);
 __decorate([
-    Column({ type: 'text' }),
+    Field(),
+    Column({
+        type: 'text'
+    }),
     __metadata("design:type", String)
 ], TradingPoint.prototype, "address", void 0);
 __decorate([
+    Field({ nullable: true }),
     Column({
         name: 'size_sqm',
         type: 'numeric',
@@ -67,6 +79,7 @@ __decorate([
     __metadata("design:type", Number)
 ], TradingPoint.prototype, "sizeSqm", void 0);
 __decorate([
+    Field({ nullable: true }),
     Column({
         name: 'rent_cost',
         type: 'numeric',
@@ -77,6 +90,7 @@ __decorate([
     __metadata("design:type", Number)
 ], TradingPoint.prototype, "rentCost", void 0);
 __decorate([
+    Field({ nullable: true }),
     Column({
         name: 'utility_cost',
         type: 'numeric',
@@ -87,6 +101,7 @@ __decorate([
     __metadata("design:type", Number)
 ], TradingPoint.prototype, "utilityCost", void 0);
 __decorate([
+    Field({ nullable: true }),
     Column({
         name: 'counter_count',
         type: 'int',
@@ -95,6 +110,7 @@ __decorate([
     __metadata("design:type", Number)
 ], TradingPoint.prototype, "counterCount", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'floors_count',
         type: 'int',
@@ -103,6 +119,7 @@ __decorate([
     __metadata("design:type", Number)
 ], TradingPoint.prototype, "floorsCount", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'opening_date',
         type: 'date',
@@ -111,6 +128,7 @@ __decorate([
     __metadata("design:type", Date)
 ], TradingPoint.prototype, "openingDate", void 0);
 __decorate([
+    Field(),
     Column({
         type: 'boolean',
         default: true
@@ -118,6 +136,7 @@ __decorate([
     __metadata("design:type", Boolean)
 ], TradingPoint.prototype, "active", void 0);
 TradingPoint = __decorate([
+    ObjectType(),
     Entity({ name: 'trading_points' }),
     __metadata("design:paramtypes", [Object])
 ], TradingPoint);

@@ -11,6 +11,7 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, } from '
 import 'reflect-metadata';
 import { TradingPoint } from './trading-point.js';
 import { Employee } from './employee.js';
+import { Field, ID, ObjectType } from "type-graphql";
 let DepartmentStoreSection = class DepartmentStoreSection {
     id;
     tradingPoint;
@@ -27,10 +28,12 @@ let DepartmentStoreSection = class DepartmentStoreSection {
     }
 };
 __decorate([
+    Field(() => ID),
     PrimaryGeneratedColumn({ type: 'int', name: 'id' }),
     __metadata("design:type", Number)
 ], DepartmentStoreSection.prototype, "id", void 0);
 __decorate([
+    Field(),
     ManyToOne(() => TradingPoint, { nullable: false }),
     JoinColumn({
         name: 'trading_point_id',
@@ -39,28 +42,34 @@ __decorate([
     __metadata("design:type", TradingPoint)
 ], DepartmentStoreSection.prototype, "tradingPoint", void 0);
 __decorate([
+    Field(),
     Column({
         type: 'varchar',
-        length: 100
+        length: 100,
+        nullable: false
     }),
     __metadata("design:type", String)
 ], DepartmentStoreSection.prototype, "name", void 0);
 __decorate([
+    Field(),
     Column({
         type: 'int',
-        name: 'floor_number'
+        name: 'floor_number',
+        nullable: false
     }),
     __metadata("design:type", Number)
 ], DepartmentStoreSection.prototype, "floorNumber", void 0);
 __decorate([
+    Field(),
     ManyToOne(() => Employee, { nullable: true }),
     JoinColumn({
         name: 'manager_id',
-        referencedColumnName: 'id'
+        referencedColumnName: 'id',
     }),
     __metadata("design:type", Employee)
 ], DepartmentStoreSection.prototype, "managerId", void 0);
 DepartmentStoreSection = __decorate([
+    ObjectType(),
     Entity({ name: 'department_store_sections' }),
     __metadata("design:paramtypes", [Object])
 ], DepartmentStoreSection);

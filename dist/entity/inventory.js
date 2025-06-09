@@ -11,6 +11,7 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Check } 
 import 'reflect-metadata';
 import { TradingPoint } from './trading-point.js';
 import { ProductDirectory } from './product-directory.js';
+import { Field, ID, ObjectType } from "type-graphql";
 let Inventory = class Inventory {
     id;
     tradingPointId;
@@ -31,32 +32,51 @@ let Inventory = class Inventory {
     }
 };
 __decorate([
+    Field(() => ID),
     PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
 ], Inventory.prototype, "id", void 0);
 __decorate([
-    Column({ name: 'trading_point_id', type: 'int', nullable: false }),
+    Field(),
+    Column({
+        name: 'trading_point_id',
+        type: 'int',
+        nullable: false
+    }),
     __metadata("design:type", Number)
 ], Inventory.prototype, "tradingPointId", void 0);
 __decorate([
+    Field(),
     ManyToOne(() => TradingPoint),
-    JoinColumn({ name: 'trading_point_id' }),
+    JoinColumn({
+        name: 'trading_point_id'
+    }),
     __metadata("design:type", TradingPoint)
 ], Inventory.prototype, "tradingPoint", void 0);
 __decorate([
-    Column({ name: 'product_id', type: 'int', nullable: false }),
+    Field(),
+    Column({
+        name: 'product_id',
+        type: 'int',
+        nullable: false
+    }),
     __metadata("design:type", Number)
 ], Inventory.prototype, "productId", void 0);
 __decorate([
+    Field(),
     ManyToOne(() => ProductDirectory),
-    JoinColumn({ name: 'product_id' }),
+    JoinColumn({
+        name: 'product_id'
+    }),
     __metadata("design:type", ProductDirectory)
 ], Inventory.prototype, "product", void 0);
 __decorate([
+    Field(),
     Column({ type: 'int', nullable: false, default: 0 }),
     __metadata("design:type", Number)
 ], Inventory.prototype, "quantity", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'selling_price',
         type: 'numeric',
@@ -68,6 +88,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Inventory.prototype, "sellingPrice", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'last_update',
         type: 'timestamp',
@@ -76,6 +97,7 @@ __decorate([
     __metadata("design:type", Date)
 ], Inventory.prototype, "lastUpdate", void 0);
 Inventory = __decorate([
+    ObjectType(),
     Entity({ name: 'inventory' }),
     __metadata("design:paramtypes", [Object])
 ], Inventory);

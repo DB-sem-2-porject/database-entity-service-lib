@@ -3,22 +3,30 @@ import 'reflect-metadata';
 
 import { Provider } from './provider.js';
 import { ProductDirectory } from './product-directory.js';
+import {Field, ID, ObjectType} from "type-graphql";
 
+@ObjectType()
 @Entity({ name: 'providers_product_list' })
 export class ProviderProductList {
+  @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;
 
+  @Field()
   @ManyToOne(() => Provider)
   @JoinColumn({
     name: 'provider_id',
   })
   provider!: Provider;
 
+  @Field()
   @ManyToOne(() => ProductDirectory)
-  @JoinColumn({ name: 'product_id' })
+  @JoinColumn({
+    name: 'product_id'
+  })
   product!: ProductDirectory;
 
+  @Field()
   @Column({
     type: 'numeric',
     precision: 12,
@@ -26,18 +34,21 @@ export class ProviderProductList {
   })
   price!: number;
 
+  @Field()
   @Column({
     type: 'int',
     default: 1
   })
   minOrderQuantity!: number;
 
+  @Field()
   @Column({
     type: 'boolean',
     default: true
   })
   active!: boolean;
 
+  @Field()
   @Column({
     type: 'timestamp',
     default: () => 'now()'

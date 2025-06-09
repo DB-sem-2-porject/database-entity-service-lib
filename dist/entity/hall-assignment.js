@@ -11,6 +11,7 @@ import { Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn, } from 'typeorm'
 import 'reflect-metadata';
 import { Employee } from './employee.js';
 import { TradingPointHall } from './trading-point-hall.js';
+import { Field, ID, ObjectType } from "type-graphql";
 let HallAssignment = class HallAssignment {
     id;
     employeeId;
@@ -23,10 +24,12 @@ let HallAssignment = class HallAssignment {
     }
 };
 __decorate([
+    Field(() => ID),
     PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
 ], HallAssignment.prototype, "id", void 0);
 __decorate([
+    Field(),
     ManyToOne(() => Employee),
     JoinColumn({
         name: 'employee_id',
@@ -35,6 +38,7 @@ __decorate([
     __metadata("design:type", Employee)
 ], HallAssignment.prototype, "employeeId", void 0);
 __decorate([
+    Field(),
     ManyToOne(() => TradingPointHall),
     JoinColumn({
         name: 'hall_id',
@@ -43,6 +47,7 @@ __decorate([
     __metadata("design:type", TradingPointHall)
 ], HallAssignment.prototype, "hallId", void 0);
 HallAssignment = __decorate([
+    ObjectType(),
     Entity({ name: 'halls_assignment' }),
     __metadata("design:paramtypes", [Object])
 ], HallAssignment);

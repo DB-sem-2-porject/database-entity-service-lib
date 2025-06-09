@@ -8,12 +8,16 @@ import {
 import 'reflect-metadata';
 import { TradingPoint } from './trading-point.js';
 import { Employee } from './employee.js';
+import {Field, ID, ObjectType} from "type-graphql";
 
+@ObjectType()
 @Entity({ name: 'department_store_sections' })
 export class DepartmentStoreSection {
+  @Field(() => ID)
   @PrimaryGeneratedColumn({ type: 'int', name: 'id' })
   id!: number;
 
+  @Field()
   @ManyToOne(() => TradingPoint, { nullable: false })
   @JoinColumn({
     name: 'trading_point_id',
@@ -21,24 +25,30 @@ export class DepartmentStoreSection {
   })
   tradingPoint!: TradingPoint;
 
+  @Field()
   @Column({
     type: 'varchar',
-    length: 100
+    length: 100,
+    nullable: false
   })
   name!: string;
 
+  @Field()
   @Column({
     type: 'int',
-    name: 'floor_number'
+    name: 'floor_number',
+    nullable: false
   })
   floorNumber!: number;
 
+  @Field()
   @ManyToOne(() => Employee, { nullable: true })
   @JoinColumn({
     name: 'manager_id',
-    referencedColumnName: 'id'
+    referencedColumnName: 'id',
   })
   managerId?: Employee;
+
 
    constructor(data?: {
      name: string;

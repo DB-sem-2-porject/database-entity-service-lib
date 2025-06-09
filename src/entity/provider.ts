@@ -6,15 +6,24 @@ import {
   JoinColumn,
 } from 'typeorm';
 import 'reflect-metadata';
+import {Field, ID, ObjectType} from "type-graphql";
 
+@ObjectType()
 @Entity({ name: 'providers' })
 export class Provider {
+  @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column({name: 'name', type: 'varchar', length: 100 })
+  @Field()
+  @Column({
+    name: 'name',
+    type: 'varchar',
+    length: 100
+  })
   name!: string;
 
+  @Field({ nullable: true })
   @Column({
     name: 'phone',
     type: 'varchar',
@@ -22,24 +31,31 @@ export class Provider {
     nullable: true })
   phone?: string;
 
+  @Field({ nullable: true })
   @Column({
     name: 'email',
     type: 'varchar',
     length: 100,
-    nullable: true })
+    nullable: true
+  })
   email?: string;
 
+  @Field({nullable: true })
   @Column({
-    type: 'text'
+    type: 'text',
+    nullable: true
   })
   address!: string;
 
+  @Field()
   @Column({
     name: 'active',
     type: 'boolean',
-    default: true })
+    default: true
+  })
   active!: boolean;
 
+  @Field()
   @Column({
     name: 'registration_date',
     type: 'date',

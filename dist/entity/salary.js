@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Check } from 'typeorm';
 import 'reflect-metadata';
 import { Employee } from './employee.js';
+import { Field, ID, ObjectType } from "type-graphql";
 let Salary = class Salary {
     id;
     employeeId;
@@ -35,10 +36,12 @@ let Salary = class Salary {
     }
 };
 __decorate([
+    Field(() => ID),
     PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
 ], Salary.prototype, "id", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'employee_id',
         type: 'int',
@@ -47,11 +50,15 @@ __decorate([
     __metadata("design:type", Number)
 ], Salary.prototype, "employeeId", void 0);
 __decorate([
+    Field(),
     ManyToOne(() => Employee),
-    JoinColumn({ name: 'employee_id' }),
+    JoinColumn({
+        name: 'employee_id'
+    }),
     __metadata("design:type", Employee)
 ], Salary.prototype, "employee", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'period_start',
         type: 'date',
@@ -60,6 +67,7 @@ __decorate([
     __metadata("design:type", Date)
 ], Salary.prototype, "periodStart", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'period_end',
         type: 'date',
@@ -69,6 +77,7 @@ __decorate([
     __metadata("design:type", Date)
 ], Salary.prototype, "periodEnd", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'base_amount',
         type: 'numeric',
@@ -79,6 +88,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Salary.prototype, "baseAmount", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'bonus',
         type: 'numeric',
@@ -89,6 +99,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Salary.prototype, "bonus", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'tax',
         type: 'numeric',
@@ -99,6 +110,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Salary.prototype, "tax", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'total_paid',
         type: 'numeric',
@@ -109,6 +121,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Salary.prototype, "totalPaid", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'payment_date',
         type: 'date',
@@ -117,6 +130,7 @@ __decorate([
     __metadata("design:type", Date)
 ], Salary.prototype, "paymentDate", void 0);
 Salary = __decorate([
+    ObjectType(),
     Entity({ name: 'salaries' }),
     __metadata("design:paramtypes", [Object])
 ], Salary);

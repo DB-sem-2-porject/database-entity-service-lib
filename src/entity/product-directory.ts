@@ -3,12 +3,16 @@ import 'reflect-metadata';
 
 import { PRODUCT_CATEGORY_ENUM_NAME, ProductCategory } from './enum/product-category.js';
 import { MEASUREMENT_TYPE_ENUM_NAME, MeasurementType } from './enum/measurement-type.js';
+import {Field, ID, ObjectType} from "type-graphql";
 
+@ObjectType()
 @Entity({ name: 'product_directory' })
 export class ProductDirectory {
+  @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;
 
+  @Field()
   @Column({
     name: 'name',
     type: 'varchar',
@@ -17,12 +21,15 @@ export class ProductDirectory {
   })
   name!: string;
 
+  @Field({ nullable: true })
   @Column({
     name: 'description',
     type: 'text',
-    nullable: true })
+    nullable: true
+  })
   description?: string;
 
+  @Field()
   @Column({
     name: 'category',
     type: 'enum',
@@ -31,6 +38,7 @@ export class ProductDirectory {
   })
   category!: ProductCategory;
 
+  @Field()
   @Column({
     name: 'measurement',
     type: 'enum',
@@ -39,6 +47,7 @@ export class ProductDirectory {
   })
   measurement!: MeasurementType;
 
+  @Field()
   @Column({
     name: 'created_at',
     type: 'date',

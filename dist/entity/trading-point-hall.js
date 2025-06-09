@@ -11,6 +11,7 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, } from '
 import 'reflect-metadata';
 import { TradingPoint } from './trading-point.js';
 import { DepartmentStoreSection } from './department-store-section.js';
+import { Field, ID, ObjectType } from "type-graphql";
 let TradingPointHall = class TradingPointHall {
     id;
     tradingPoint;
@@ -29,32 +30,56 @@ let TradingPointHall = class TradingPointHall {
     }
 };
 __decorate([
+    Field(() => ID),
     PrimaryGeneratedColumn({ type: 'int', name: 'id' }),
     __metadata("design:type", Number)
 ], TradingPointHall.prototype, "id", void 0);
 __decorate([
+    Field(),
     ManyToOne(() => TradingPoint, { nullable: false }),
-    JoinColumn({ name: 'trading_point_id' }),
+    JoinColumn({
+        name: 'trading_point_id'
+    }),
     __metadata("design:type", TradingPoint)
 ], TradingPointHall.prototype, "tradingPoint", void 0);
 __decorate([
+    Field(),
     ManyToOne(() => DepartmentStoreSection, { nullable: true }),
-    JoinColumn({ name: 'section_id' }),
+    JoinColumn({
+        name: 'section_id'
+    }),
     __metadata("design:type", DepartmentStoreSection)
 ], TradingPointHall.prototype, "section", void 0);
 __decorate([
-    Column({ type: 'varchar', length: 100 }),
+    Field(),
+    Column({
+        type: 'varchar',
+        length: 100
+    }),
     __metadata("design:type", String)
 ], TradingPointHall.prototype, "name", void 0);
 __decorate([
-    Column({ type: 'int', name: 'floor_number', default: 1 }),
+    Field(),
+    Column({
+        type: 'int',
+        name: 'floor_number',
+        default: 1
+    }),
     __metadata("design:type", Number)
 ], TradingPointHall.prototype, "floorNumber", void 0);
 __decorate([
-    Column({ type: 'numeric', precision: 10, scale: 2, name: 'size_sqm', nullable: true }),
+    Field({ nullable: true }),
+    Column({
+        type: 'numeric',
+        precision: 10,
+        scale: 2,
+        name: 'size_sqm',
+        nullable: true
+    }),
     __metadata("design:type", Number)
 ], TradingPointHall.prototype, "sizeSqm", void 0);
 TradingPointHall = __decorate([
+    ObjectType(),
     Entity({ name: 'trading_point_halls' }),
     __metadata("design:paramtypes", [Object])
 ], TradingPointHall);

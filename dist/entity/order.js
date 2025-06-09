@@ -11,6 +11,7 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 't
 import 'reflect-metadata';
 import { Provider } from './provider.js';
 import { ORDER_STATUS_ENUM_NAME, OrderStatus } from './enum/order-status.js';
+import { Field, ID, ObjectType } from "type-graphql";
 let Order = class Order {
     id;
     provider;
@@ -28,10 +29,12 @@ let Order = class Order {
     }
 };
 __decorate([
+    Field(() => ID),
     PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
 ], Order.prototype, "id", void 0);
 __decorate([
+    Field(),
     ManyToOne(() => Provider, { nullable: false }),
     JoinColumn({
         name: 'provider_id',
@@ -40,6 +43,7 @@ __decorate([
     __metadata("design:type", Provider)
 ], Order.prototype, "provider", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'order_date',
         type: 'timestamp',
@@ -49,6 +53,7 @@ __decorate([
     __metadata("design:type", Date)
 ], Order.prototype, "orderDate", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'status',
         type: 'enum',
@@ -58,6 +63,7 @@ __decorate([
     __metadata("design:type", String)
 ], Order.prototype, "status", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'total_cost',
         type: 'numeric',
@@ -67,6 +73,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Order.prototype, "totalCost", void 0);
 __decorate([
+    Field({ nullable: true }),
     Column({
         name: 'notes',
         type: 'text',
@@ -76,6 +83,7 @@ __decorate([
     __metadata("design:type", String)
 ], Order.prototype, "notes", void 0);
 Order = __decorate([
+    ObjectType(),
     Entity({ name: 'orders' }),
     __metadata("design:paramtypes", [Object])
 ], Order);

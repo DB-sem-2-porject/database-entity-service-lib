@@ -11,6 +11,7 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, } from '
 import 'reflect-metadata';
 import { EMPLOYEE_ROLE_ENUM_NAME, EmployeeRole } from './enum/employee-role.js';
 import { TradingPoint } from './trading-point.js';
+import { Field, ID, ObjectType } from "type-graphql";
 let Employee = class Employee {
     id;
     fullName;
@@ -35,44 +36,61 @@ let Employee = class Employee {
     }
 };
 __decorate([
+    Field(() => ID),
     PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
 ], Employee.prototype, "id", void 0);
 __decorate([
-    Column({ name: 'full_name', type: 'varchar', length: 100 }),
+    Field(),
+    Column({
+        name: 'full_name',
+        type: 'varchar',
+        length: 100,
+        nullable: false
+    }),
     __metadata("design:type", String)
 ], Employee.prototype, "fullName", void 0);
 __decorate([
+    Field(),
     Column({
         type: 'enum',
         enum: EmployeeRole,
         enumName: EMPLOYEE_ROLE_ENUM_NAME,
+        nullable: false
     }),
     __metadata("design:type", String)
 ], Employee.prototype, "role", void 0);
 __decorate([
+    Field(),
     ManyToOne(() => TradingPoint),
-    JoinColumn({ name: 'trading_point_id' }),
+    JoinColumn({
+        name: 'trading_point_id'
+    }),
     __metadata("design:type", TradingPoint)
 ], Employee.prototype, "tradingPoint", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'hire_date',
         type: 'date',
-        default: () => 'CURRENT_DATE'
+        default: () => 'CURRENT_DATE',
+        nullable: false
     }),
     __metadata("design:type", Date)
 ], Employee.prototype, "hireDate", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'base_salary',
         type: 'numeric',
         precision: 10,
-        scale: 2
+        scale: 2,
+        nullable: false
     }),
     __metadata("design:type", Number)
 ], Employee.prototype, "baseSalary", void 0);
 __decorate([
+    Field({ nullable: true }),
     Column({
         name: 'phone',
         type: 'varchar',
@@ -82,6 +100,7 @@ __decorate([
     __metadata("design:type", String)
 ], Employee.prototype, "phone", void 0);
 __decorate([
+    Field({ nullable: true }),
     Column({
         name: 'email',
         type: 'varchar',
@@ -91,14 +110,17 @@ __decorate([
     __metadata("design:type", String)
 ], Employee.prototype, "email", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'active',
         type: 'boolean',
-        default: true
+        default: true,
+        nullable: false
     }),
     __metadata("design:type", Boolean)
 ], Employee.prototype, "active", void 0);
 Employee = __decorate([
+    ObjectType(),
     Entity({ name: 'employees' }),
     __metadata("design:paramtypes", [Object])
 ], Employee);

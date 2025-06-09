@@ -8,22 +8,29 @@ import {
 import 'reflect-metadata';
 import { Employee } from './employee.js';
 import { TradingPointHall } from './trading-point-hall.js';
+import {Field, ID, ObjectType} from "type-graphql";
 
+@ObjectType()
 @Entity({ name: 'halls_assignment' })
 export class HallAssignment {
+  @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;
 
+  @Field()
   @ManyToOne(() => Employee)
   @JoinColumn({
     name: 'employee_id',
-    referencedColumnName: 'id' })
+    referencedColumnName: 'id'
+  })
   employeeId!: Employee;
 
+  @Field()
   @ManyToOne(() => TradingPointHall)
   @JoinColumn({
     name: 'hall_id',
-    referencedColumnName: 'id' })
+    referencedColumnName: 'id'
+  })
   hallId!: TradingPointHall;
 
   constructor(data?: {

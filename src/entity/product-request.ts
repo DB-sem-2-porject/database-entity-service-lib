@@ -3,12 +3,16 @@ import 'reflect-metadata';
 import { TradingPoint } from './trading-point.js';
 import { Employee } from './employee.js';
 import { PRODUCT_REQUEST_STATUS_ENUM_NAME, ProductRequestStatus } from './enum/product-request-status.js';
+import {Field, ID, ObjectType} from "type-graphql";
 
+@ObjectType()
 @Entity({ name: 'product_requests' })
 export class ProductRequest {
+  @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;
 
+  @Field()
   @ManyToOne(() => TradingPoint, { nullable: false })
   @JoinColumn({
     name: 'trading_point_id',
@@ -16,12 +20,15 @@ export class ProductRequest {
   })
   tradingPoint!: TradingPoint;
 
+  @Field()
   @ManyToOne(() => Employee)
   @JoinColumn({
     name: 'employee_id',
-    referencedColumnName: 'id' })
+    referencedColumnName: 'id'
+  })
   employee!: Employee;
 
+  @Field()
   @Column({
     name: 'request_date',
     type: 'timestamp',
@@ -30,6 +37,7 @@ export class ProductRequest {
   })
   requestDate?: Date;
 
+  @Field()
   @Column({
     name: 'status',
     type: 'enum',
@@ -38,6 +46,7 @@ export class ProductRequest {
   })
   status!: ProductRequestStatus;
 
+  @Field({ nullable: true })
   @Column({
     name: 'notes',
     type: 'text',

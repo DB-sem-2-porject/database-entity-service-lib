@@ -2,12 +2,16 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 't
 import 'reflect-metadata';
 import { ProductRequest } from './product-request.js';
 import { ProductDirectory } from './product-directory.js';
+import {Field, ID, ObjectType} from "type-graphql";
 
+@ObjectType()
 @Entity({ name: 'product_request_items' })
 export class ProductRequestItem {
+  @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;
 
+  @Field()
   @ManyToOne(() => ProductRequest, { nullable: false })
   @JoinColumn({
     name: 'request_id',
@@ -15,12 +19,14 @@ export class ProductRequestItem {
   })
   request!: ProductRequest;
 
+  @Field()
   @ManyToOne(() => ProductDirectory)
   @JoinColumn({
     name: 'product_id',
     referencedColumnName: 'id' })
   product!: ProductDirectory;
 
+  @Field()
   @Column({
     name: 'quantity',
     type: 'int',

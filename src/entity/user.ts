@@ -6,15 +6,19 @@ import {
     UpdateDateColumn,
 } from 'typeorm';
 import "reflect-metadata"
+import {Field, ID, ObjectType} from "type-graphql";
 
+@ObjectType()
 @Entity({ name: 'users' })
 export class User {
+    @Field(() => ID)
     @PrimaryGeneratedColumn({
         type: 'int',
         name: 'id'
     })
     id!: number;
 
+    @Field()
     @Column({
         type: 'varchar',
         length: 100,
@@ -22,12 +26,14 @@ export class User {
     })
     email!: string;
 
+    @Field()
     @Column({
         type: 'varchar',
         length: 255
     })
     password!: string;
 
+    @Field()
     @Column({
         name: 'refresh_token',
         type: 'text',
@@ -35,6 +41,7 @@ export class User {
     })
     refreshToken?: string;
 
+    @Field()
     @Column({
         name: 'reset_token',
         type: 'text',
@@ -42,6 +49,7 @@ export class User {
     })
     resetToken?: string;
 
+    @Field()
     @CreateDateColumn({
         name: 'registration_date',
         type: 'timestamp',
@@ -49,6 +57,7 @@ export class User {
     })
     registrationDate!: Date;
 
+    @Field({ nullable: true })
     @UpdateDateColumn({
         name: 'last_login',
         type: 'timestamp',

@@ -2,30 +2,54 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Check } 
 import 'reflect-metadata';
 import { Order } from './order.js';
 import { ProductDirectory } from './product-directory.js';
+import {Field, ID, ObjectType} from "type-graphql";
 
+@ObjectType()
 @Entity({ name: 'order_items' })
 export class OrderItem {
+  @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;
-  
-  @Column({ name: 'order_id', type: 'int', nullable: false })
+
+  @Field()
+  @Column({
+    name: 'order_id',
+    type: 'int',
+    nullable: false
+  })
   orderId!: number;
-  
+
+  @Field()
   @ManyToOne(() => Order)
-  @JoinColumn({ name: 'order_id' })
+  @JoinColumn({
+    name: 'order_id'
+  })
   order!: Order;
-  
-  @Column({ name: 'product_id', type: 'int', nullable: false })
+
+  @Field()
+  @Column({
+    name: 'product_id',
+    type: 'int',
+    nullable: false
+  })
   productId!: number;
-  
+
+  @Field()
   @ManyToOne(() => ProductDirectory)
-  @JoinColumn({ name: 'product_id' })
+  @JoinColumn({
+    name: 'product_id'
+  })
   product!: ProductDirectory;
-  
-  @Column({ type: 'int', nullable: false })
+
+  @Field()
+  @Column({
+    type: 'int',
+    nullable: false
+  })
   @Check('positive_quantity', 'quantity > 0')
   quantity!: number;
-  
+
+  @Field()
   @Column({
     type: 'numeric',
     precision: 12,

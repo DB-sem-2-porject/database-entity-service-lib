@@ -5,24 +5,37 @@ import {
 } from 'typeorm';
 import 'reflect-metadata';
 import { TradingPointType } from './enum/trading-point-type.js';
+import {Field, ID, ObjectType} from "type-graphql";
 
+@ObjectType()
 @Entity({ name: 'trading_points' })
 export class TradingPoint {
+    @Field(() => ID)
     @PrimaryGeneratedColumn({ type: 'int', name: 'id' })
     id!: number;
 
-    @Column({ type: 'varchar', length: 100, unique: true })
+    @Field()
+    @Column({
+        type: 'varchar',
+        length: 100,
+        unique: true
+    })
     name!: string;
 
+    @Field()
     @Column({
         type: 'enum',
         enum: TradingPointType,
     })
     type!: TradingPointType;
 
-    @Column({ type: 'text' })
+    @Field()
+    @Column({
+        type: 'text'
+    })
     address!: string;
 
+    @Field({ nullable: true })
     @Column({
         name: 'size_sqm',
         type: 'numeric',
@@ -32,6 +45,7 @@ export class TradingPoint {
     })
     sizeSqm?: number;
 
+    @Field({ nullable: true })
     @Column({
         name: 'rent_cost',
         type: 'numeric',
@@ -41,6 +55,7 @@ export class TradingPoint {
     })
     rentCost?: number;
 
+    @Field({ nullable: true })
     @Column({
         name: 'utility_cost',
         type: 'numeric',
@@ -49,6 +64,7 @@ export class TradingPoint {
         nullable: true })
     utilityCost?: number;
 
+    @Field({ nullable: true })
     @Column({
         name: 'counter_count',
         type: 'int',
@@ -56,6 +72,7 @@ export class TradingPoint {
     })
     counterCount?: number;
 
+    @Field()
     @Column({
         name: 'floors_count',
         type: 'int',
@@ -63,6 +80,7 @@ export class TradingPoint {
     })
     floorsCount!: number;
 
+    @Field()
     @Column({
         name: 'opening_date',
         type: 'date',
@@ -70,6 +88,7 @@ export class TradingPoint {
     })
     openingDate!: Date;
 
+    @Field()
     @Column({
         type: 'boolean',
         default: true

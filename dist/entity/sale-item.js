@@ -11,6 +11,7 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Check } 
 import 'reflect-metadata';
 import { Sale } from './sale.js';
 import { ProductDirectory } from './product-directory.js';
+import { Field, ID, ObjectType } from "type-graphql";
 let SaleItem = class SaleItem {
     id;
     saleId;
@@ -29,10 +30,12 @@ let SaleItem = class SaleItem {
     }
 };
 __decorate([
+    Field(() => ID),
     PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
 ], SaleItem.prototype, "id", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'sale_id',
         type: 'int',
@@ -41,11 +44,15 @@ __decorate([
     __metadata("design:type", Number)
 ], SaleItem.prototype, "saleId", void 0);
 __decorate([
+    Field(),
     ManyToOne(() => Sale),
-    JoinColumn({ name: 'sale_id' }),
+    JoinColumn({
+        name: 'sale_id'
+    }),
     __metadata("design:type", Sale)
 ], SaleItem.prototype, "sale", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'product_id',
         type: 'int',
@@ -54,11 +61,13 @@ __decorate([
     __metadata("design:type", Number)
 ], SaleItem.prototype, "productId", void 0);
 __decorate([
+    Field(),
     ManyToOne(() => ProductDirectory),
     JoinColumn({ name: 'product_id' }),
     __metadata("design:type", ProductDirectory)
 ], SaleItem.prototype, "product", void 0);
 __decorate([
+    Field(),
     Column({
         type: 'int',
         nullable: false
@@ -67,6 +76,7 @@ __decorate([
     __metadata("design:type", Number)
 ], SaleItem.prototype, "quantity", void 0);
 __decorate([
+    Field(),
     Column({
         type: 'numeric',
         precision: 12,
@@ -77,6 +87,7 @@ __decorate([
     __metadata("design:type", Number)
 ], SaleItem.prototype, "price", void 0);
 SaleItem = __decorate([
+    ObjectType(),
     Entity({ name: 'sale_items' }),
     __metadata("design:paramtypes", [Object])
 ], SaleItem);

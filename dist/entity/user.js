@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, } from 'typeorm';
 import "reflect-metadata";
+import { Field, ID, ObjectType } from "type-graphql";
 let User = class User {
     id;
     email;
@@ -26,6 +27,7 @@ let User = class User {
     }
 };
 __decorate([
+    Field(() => ID),
     PrimaryGeneratedColumn({
         type: 'int',
         name: 'id'
@@ -33,6 +35,7 @@ __decorate([
     __metadata("design:type", Number)
 ], User.prototype, "id", void 0);
 __decorate([
+    Field(),
     Column({
         type: 'varchar',
         length: 100,
@@ -41,6 +44,7 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "email", void 0);
 __decorate([
+    Field(),
     Column({
         type: 'varchar',
         length: 255
@@ -48,6 +52,7 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "password", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'refresh_token',
         type: 'text',
@@ -56,6 +61,7 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "refreshToken", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'reset_token',
         type: 'text',
@@ -64,6 +70,7 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "resetToken", void 0);
 __decorate([
+    Field(),
     CreateDateColumn({
         name: 'registration_date',
         type: 'timestamp',
@@ -72,6 +79,7 @@ __decorate([
     __metadata("design:type", Date)
 ], User.prototype, "registrationDate", void 0);
 __decorate([
+    Field({ nullable: true }),
     UpdateDateColumn({
         name: 'last_login',
         type: 'timestamp',
@@ -80,6 +88,7 @@ __decorate([
     __metadata("design:type", Date)
 ], User.prototype, "lastLogin", void 0);
 User = __decorate([
+    ObjectType(),
     Entity({ name: 'users' }),
     __metadata("design:paramtypes", [Object])
 ], User);

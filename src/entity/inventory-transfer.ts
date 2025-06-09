@@ -4,58 +4,107 @@ import { TradingPoint } from './trading-point.js';
 import { ProductDirectory } from './product-directory.js';
 import { Employee } from './employee.js';
 import {TransferStatus} from './enum/transfer-status.js';
+import {Field, ID, ObjectType} from "type-graphql";
 
+@ObjectType()
 @Entity({ name: 'inventory_transfers' })
 export class InventoryTransfer {
+  @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;
-  
-  @Column({ name: 'source_point_id', type: 'int', nullable: false })
+
+  @Field()
+  @Column({
+    name: 'source_point_id',
+    type: 'int',
+    nullable: false
+  })
   sourcePointId!: number;
-  
+
+  @Field()
   @ManyToOne(() => TradingPoint)
-  @JoinColumn({ name: 'source_point_id' })
+  @JoinColumn({
+    name: 'source_point_id'
+  })
   sourcePoint!: TradingPoint;
-  
-  @Column({ name: 'destination_point_id', type: 'int', nullable: false })
+
+  @Field()
+  @Column({
+    name: 'destination_point_id',
+    type: 'int',
+    nullable: false
+  })
   destinationPointId!: number;
-  
+
+  @Field()
   @ManyToOne(() => TradingPoint)
-  @JoinColumn({ name: 'destination_point_id' })
+  @JoinColumn({
+    name: 'destination_point_id'
+  })
   destinationPoint!: TradingPoint;
-  
-  @Column({ name: 'product_id', type: 'int', nullable: false })
+
+  @Field()
+  @Column({
+    name: 'product_id',
+    type: 'int',
+    nullable: false
+  })
   productId!: number;
-  
+
+  @Field()
   @ManyToOne(() => ProductDirectory)
-  @JoinColumn({ name: 'product_id' })
+  @JoinColumn({
+    name: 'product_id'
+  })
   product!: ProductDirectory;
-  
-  @Column({ type: 'int', nullable: false })
+
+  @Field()
+  @Column({
+    type: 'int',
+    nullable: false
+  })
   @Check('positive_quantity', 'quantity > 0')
   quantity!: number;
-  
+
+  @Field()
   @Column({
     name: 'transfer_date',
     type: 'timestamp',
     default: () => 'now()'
   })
   transferDate!: Date;
-  
-  @Column({ name: 'initiated_by', type: 'int', nullable: false })
+
+  @Field()
+  @Column({
+    name: 'initiated_by',
+    type: 'int',
+    nullable: false
+  })
   initiatedById!: number;
-  
+
+  @Field()
   @ManyToOne(() => Employee)
-  @JoinColumn({ name: 'initiated_by' })
+  @JoinColumn({
+    name: 'initiated_by'
+  })
   initiatedBy!: Employee;
-  
-  @Column({ name: 'approved_by', type: 'int', nullable: true })
+
+  @Field()
+  @Column({
+    name: 'approved_by',
+    type: 'int',
+    nullable: true
+  })
   approvedById?: number;
-  
+
+  @Field()
   @ManyToOne(() => Employee)
-  @JoinColumn({ name: 'approved_by' })
+  @JoinColumn({
+    name: 'approved_by'
+  })
   approvedBy?: Employee;
-  
+
+  @Field()
   @Column({
     type: 'enum',
     enum: TransferStatus,

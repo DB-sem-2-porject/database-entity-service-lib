@@ -11,6 +11,7 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 't
 import 'reflect-metadata';
 import { ProductRequest } from './product-request.js';
 import { ProductDirectory } from './product-directory.js';
+import { Field, ID, ObjectType } from "type-graphql";
 let ProductRequestItem = class ProductRequestItem {
     id;
     request;
@@ -25,10 +26,12 @@ let ProductRequestItem = class ProductRequestItem {
     }
 };
 __decorate([
+    Field(() => ID),
     PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
 ], ProductRequestItem.prototype, "id", void 0);
 __decorate([
+    Field(),
     ManyToOne(() => ProductRequest, { nullable: false }),
     JoinColumn({
         name: 'request_id',
@@ -37,6 +40,7 @@ __decorate([
     __metadata("design:type", ProductRequest)
 ], ProductRequestItem.prototype, "request", void 0);
 __decorate([
+    Field(),
     ManyToOne(() => ProductDirectory),
     JoinColumn({
         name: 'product_id',
@@ -45,6 +49,7 @@ __decorate([
     __metadata("design:type", ProductDirectory)
 ], ProductRequestItem.prototype, "product", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'quantity',
         type: 'int',
@@ -53,6 +58,7 @@ __decorate([
     __metadata("design:type", Number)
 ], ProductRequestItem.prototype, "quantity", void 0);
 ProductRequestItem = __decorate([
+    ObjectType(),
     Entity({ name: 'product_request_items' }),
     __metadata("design:paramtypes", [Object])
 ], ProductRequestItem);

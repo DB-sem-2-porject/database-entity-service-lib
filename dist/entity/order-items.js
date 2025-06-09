@@ -11,6 +11,7 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Check } 
 import 'reflect-metadata';
 import { Order } from './order.js';
 import { ProductDirectory } from './product-directory.js';
+import { Field, ID, ObjectType } from "type-graphql";
 let OrderItem = class OrderItem {
     id;
     orderId;
@@ -29,33 +30,55 @@ let OrderItem = class OrderItem {
     }
 };
 __decorate([
+    Field(() => ID),
     PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
 ], OrderItem.prototype, "id", void 0);
 __decorate([
-    Column({ name: 'order_id', type: 'int', nullable: false }),
+    Field(),
+    Column({
+        name: 'order_id',
+        type: 'int',
+        nullable: false
+    }),
     __metadata("design:type", Number)
 ], OrderItem.prototype, "orderId", void 0);
 __decorate([
+    Field(),
     ManyToOne(() => Order),
-    JoinColumn({ name: 'order_id' }),
+    JoinColumn({
+        name: 'order_id'
+    }),
     __metadata("design:type", Order)
 ], OrderItem.prototype, "order", void 0);
 __decorate([
-    Column({ name: 'product_id', type: 'int', nullable: false }),
+    Field(),
+    Column({
+        name: 'product_id',
+        type: 'int',
+        nullable: false
+    }),
     __metadata("design:type", Number)
 ], OrderItem.prototype, "productId", void 0);
 __decorate([
+    Field(),
     ManyToOne(() => ProductDirectory),
-    JoinColumn({ name: 'product_id' }),
+    JoinColumn({
+        name: 'product_id'
+    }),
     __metadata("design:type", ProductDirectory)
 ], OrderItem.prototype, "product", void 0);
 __decorate([
-    Column({ type: 'int', nullable: false }),
+    Field(),
+    Column({
+        type: 'int',
+        nullable: false
+    }),
     Check('positive_quantity', 'quantity > 0'),
     __metadata("design:type", Number)
 ], OrderItem.prototype, "quantity", void 0);
 __decorate([
+    Field(),
     Column({
         type: 'numeric',
         precision: 12,
@@ -66,6 +89,7 @@ __decorate([
     __metadata("design:type", Number)
 ], OrderItem.prototype, "price", void 0);
 OrderItem = __decorate([
+    ObjectType(),
     Entity({ name: 'order_items' }),
     __metadata("design:paramtypes", [Object])
 ], OrderItem);

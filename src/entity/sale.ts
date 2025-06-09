@@ -4,13 +4,16 @@ import { Customer } from './customer.js';
 import { Employee } from './employee.js';
 import { TradingPoint } from './trading-point.js';
 import { PaymentMethod } from './enum/payment-method.js';
+import {Field, ID, ObjectType} from "type-graphql";
 
-
+@ObjectType()
 @Entity({ name: 'sales' })
 export class Sale {
+    @Field(() => ID)
     @PrimaryGeneratedColumn()
     id!: number;
 
+    @Field()
     @Column({
         name: 'trading_point_id',
         type: 'int',
@@ -18,10 +21,14 @@ export class Sale {
     })
     tradingPointId!: number;
 
+    @Field()
     @ManyToOne(() => TradingPoint)
-    @JoinColumn({ name: 'trading_point_id' })
+    @JoinColumn({
+        name: 'trading_point_id'
+    })
     tradingPoint!: TradingPoint;
 
+    @Field()
     @Column({
         name: 'employee_id',
         type: 'int',
@@ -29,10 +36,14 @@ export class Sale {
     })
     employeeId!: number;
 
+    @Field()
     @ManyToOne(() => Employee)
-    @JoinColumn({ name: 'employee_id' })
+    @JoinColumn({
+        name: 'employee_id'
+    })
     employee!: Employee;
 
+    @Field({ nullable: true })
     @Column({
         name: 'customer_id',
         type: 'int',
@@ -40,10 +51,12 @@ export class Sale {
     })
     customerId?: number;
 
+    @Field()
     @ManyToOne(() => Customer)
     @JoinColumn({ name: 'customer_id' })
     customer?: Customer;
 
+    @Field()
     @Column({
         name: 'sale_date',
         type: 'timestamp',
@@ -52,6 +65,7 @@ export class Sale {
     })
     saleDate!: Date;
 
+    @Field()
     @Column({
         name: 'total_amount',
         type: 'numeric',
@@ -61,6 +75,7 @@ export class Sale {
     })
     totalAmount!: number;
 
+    @Field()
     @Column({
         name: 'payment_method',
         type: 'enum',

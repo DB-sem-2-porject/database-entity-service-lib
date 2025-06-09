@@ -13,6 +13,7 @@ import { TradingPoint } from './trading-point.js';
 import { ProductDirectory } from './product-directory.js';
 import { Employee } from './employee.js';
 import { TransferStatus } from './enum/transfer-status.js';
+import { Field, ID, ObjectType } from "type-graphql";
 let InventoryTransfer = class InventoryTransfer {
     id;
     sourcePointId;
@@ -42,42 +43,72 @@ let InventoryTransfer = class InventoryTransfer {
     }
 };
 __decorate([
+    Field(() => ID),
     PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
 ], InventoryTransfer.prototype, "id", void 0);
 __decorate([
-    Column({ name: 'source_point_id', type: 'int', nullable: false }),
+    Field(),
+    Column({
+        name: 'source_point_id',
+        type: 'int',
+        nullable: false
+    }),
     __metadata("design:type", Number)
 ], InventoryTransfer.prototype, "sourcePointId", void 0);
 __decorate([
+    Field(),
     ManyToOne(() => TradingPoint),
-    JoinColumn({ name: 'source_point_id' }),
+    JoinColumn({
+        name: 'source_point_id'
+    }),
     __metadata("design:type", TradingPoint)
 ], InventoryTransfer.prototype, "sourcePoint", void 0);
 __decorate([
-    Column({ name: 'destination_point_id', type: 'int', nullable: false }),
+    Field(),
+    Column({
+        name: 'destination_point_id',
+        type: 'int',
+        nullable: false
+    }),
     __metadata("design:type", Number)
 ], InventoryTransfer.prototype, "destinationPointId", void 0);
 __decorate([
+    Field(),
     ManyToOne(() => TradingPoint),
-    JoinColumn({ name: 'destination_point_id' }),
+    JoinColumn({
+        name: 'destination_point_id'
+    }),
     __metadata("design:type", TradingPoint)
 ], InventoryTransfer.prototype, "destinationPoint", void 0);
 __decorate([
-    Column({ name: 'product_id', type: 'int', nullable: false }),
+    Field(),
+    Column({
+        name: 'product_id',
+        type: 'int',
+        nullable: false
+    }),
     __metadata("design:type", Number)
 ], InventoryTransfer.prototype, "productId", void 0);
 __decorate([
+    Field(),
     ManyToOne(() => ProductDirectory),
-    JoinColumn({ name: 'product_id' }),
+    JoinColumn({
+        name: 'product_id'
+    }),
     __metadata("design:type", ProductDirectory)
 ], InventoryTransfer.prototype, "product", void 0);
 __decorate([
-    Column({ type: 'int', nullable: false }),
+    Field(),
+    Column({
+        type: 'int',
+        nullable: false
+    }),
     Check('positive_quantity', 'quantity > 0'),
     __metadata("design:type", Number)
 ], InventoryTransfer.prototype, "quantity", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'transfer_date',
         type: 'timestamp',
@@ -86,24 +117,41 @@ __decorate([
     __metadata("design:type", Date)
 ], InventoryTransfer.prototype, "transferDate", void 0);
 __decorate([
-    Column({ name: 'initiated_by', type: 'int', nullable: false }),
+    Field(),
+    Column({
+        name: 'initiated_by',
+        type: 'int',
+        nullable: false
+    }),
     __metadata("design:type", Number)
 ], InventoryTransfer.prototype, "initiatedById", void 0);
 __decorate([
+    Field(),
     ManyToOne(() => Employee),
-    JoinColumn({ name: 'initiated_by' }),
+    JoinColumn({
+        name: 'initiated_by'
+    }),
     __metadata("design:type", Employee)
 ], InventoryTransfer.prototype, "initiatedBy", void 0);
 __decorate([
-    Column({ name: 'approved_by', type: 'int', nullable: true }),
+    Field(),
+    Column({
+        name: 'approved_by',
+        type: 'int',
+        nullable: true
+    }),
     __metadata("design:type", Number)
 ], InventoryTransfer.prototype, "approvedById", void 0);
 __decorate([
+    Field(),
     ManyToOne(() => Employee),
-    JoinColumn({ name: 'approved_by' }),
+    JoinColumn({
+        name: 'approved_by'
+    }),
     __metadata("design:type", Employee)
 ], InventoryTransfer.prototype, "approvedBy", void 0);
 __decorate([
+    Field(),
     Column({
         type: 'enum',
         enum: TransferStatus,
@@ -112,6 +160,7 @@ __decorate([
     __metadata("design:type", String)
 ], InventoryTransfer.prototype, "status", void 0);
 InventoryTransfer = __decorate([
+    ObjectType(),
     Entity({ name: 'inventory_transfers' }),
     __metadata("design:paramtypes", [Object])
 ], InventoryTransfer);

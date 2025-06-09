@@ -2,12 +2,16 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Check } 
 import 'reflect-metadata';
 import { Sale } from './sale.js';
 import { ProductDirectory } from './product-directory.js';
+import {Field, ID, ObjectType} from "type-graphql";
 
+@ObjectType()
 @Entity({ name: 'sale_items' })
 export class SaleItem {
+    @Field(() => ID)
     @PrimaryGeneratedColumn()
     id!: number;
 
+    @Field()
     @Column({
         name: 'sale_id',
         type: 'int',
@@ -15,10 +19,14 @@ export class SaleItem {
     })
     saleId!: number;
 
+    @Field()
     @ManyToOne(() => Sale)
-    @JoinColumn({ name: 'sale_id' })
+    @JoinColumn({
+        name: 'sale_id'
+    })
     sale!: Sale;
 
+    @Field()
     @Column({
         name: 'product_id',
         type: 'int',
@@ -26,10 +34,12 @@ export class SaleItem {
     })
     productId!: number;
 
+    @Field()
     @ManyToOne(() => ProductDirectory)
     @JoinColumn({ name: 'product_id' })
     product!: ProductDirectory;
 
+    @Field()
     @Column({
         type: 'int',
         nullable: false
@@ -37,6 +47,7 @@ export class SaleItem {
     @Check('positive_quantity', 'quantity > 0')
     quantity!: number;
 
+    @Field()
     @Column({
         type: 'numeric',
         precision: 12,

@@ -12,6 +12,7 @@ import 'reflect-metadata';
 import { TradingPoint } from './trading-point.js';
 import { Employee } from './employee.js';
 import { PRODUCT_REQUEST_STATUS_ENUM_NAME, ProductRequestStatus } from './enum/product-request-status.js';
+import { Field, ID, ObjectType } from "type-graphql";
 let ProductRequest = class ProductRequest {
     id;
     tradingPoint;
@@ -29,10 +30,12 @@ let ProductRequest = class ProductRequest {
     }
 };
 __decorate([
+    Field(() => ID),
     PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
 ], ProductRequest.prototype, "id", void 0);
 __decorate([
+    Field(),
     ManyToOne(() => TradingPoint, { nullable: false }),
     JoinColumn({
         name: 'trading_point_id',
@@ -41,6 +44,7 @@ __decorate([
     __metadata("design:type", TradingPoint)
 ], ProductRequest.prototype, "tradingPoint", void 0);
 __decorate([
+    Field(),
     ManyToOne(() => Employee),
     JoinColumn({
         name: 'employee_id',
@@ -49,6 +53,7 @@ __decorate([
     __metadata("design:type", Employee)
 ], ProductRequest.prototype, "employee", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'request_date',
         type: 'timestamp',
@@ -58,6 +63,7 @@ __decorate([
     __metadata("design:type", Date)
 ], ProductRequest.prototype, "requestDate", void 0);
 __decorate([
+    Field(),
     Column({
         name: 'status',
         type: 'enum',
@@ -67,6 +73,7 @@ __decorate([
     __metadata("design:type", String)
 ], ProductRequest.prototype, "status", void 0);
 __decorate([
+    Field({ nullable: true }),
     Column({
         name: 'notes',
         type: 'text',
@@ -76,6 +83,7 @@ __decorate([
     __metadata("design:type", Boolean)
 ], ProductRequest.prototype, "notes", void 0);
 ProductRequest = __decorate([
+    ObjectType(),
     Entity({ name: 'product_requests' }),
     __metadata("design:paramtypes", [Object])
 ], ProductRequest);
