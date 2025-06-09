@@ -3,8 +3,21 @@ import {
     FindOptionsWhere,
     Repository,
     In,
-    DeepPartial
+    DeepPartial,
+    FindManyOptions,
+    FindOptionsOrder,
+    FindOptionsSelect
 } from "typeorm";
+
+// Интерфейс для опций запроса
+export interface QueryOptions<T> {
+    where?: FindOptionsWhere<T> | FindOptionsWhere<T>[];
+    order?: FindOptionsOrder<T>;
+    take?: number;
+    skip?: number;
+    select?: FindOptionsSelect<T>;
+    relations?: string[];
+}
 
 export abstract class BaseService<T extends { id: number }> {
     protected repository: Repository<T>;
@@ -30,31 +43,80 @@ export abstract class BaseService<T extends { id: number }> {
         return conditions;
     }
 
+    // Утилитарная функция для удаления undefined значений
+    private cleanFindOptions<TOptions extends Record<string, any>>(options: TOptions): TOptions {
+        const cleaned = {} as TOptions;
+
+        (Object.keys(options) as Array<keyof TOptions>).forEach(key => {
+            if (options[key] !== undefined) {
+                cleaned[key] = options[key];
+            }
+        });
+
+        return cleaned;
+    }
+
     async create(data: DeepPartial<T>): Promise<T> {
         const entity = this.repository.create(data);
         return await this.repository.save(entity);
     }
 
-    async read(where: FindOptionsWhere<T>): Promise<T[]> {
-        return this.repository.find({ where });
+    // Универсальный метод чтения
+    async read(options: QueryOptions<T> = {}): Promise<T[]> {
+        const findOptions: FindManyOptions<T> = {
+            where: options.where,
+            order: options.order,
+            take: options.take,
+            skip: options.skip,
+            select: options.select,
+            relations: options.relations
+        };
+
+        const cleanedOptions = this.cleanFindOptions(findOptions);
+        return this.repository.find(cleanedOptions);
+    }
+
+    // Удобный метод для получения одной записи
+    async readOne(options: QueryOptions<T> = {}): Promise<T | null> {
+        const results = await this.read({ ...options, take: 1 });
+        return results[0] || null;
+    }
+
+    // Метод с подсчетом для пагинации
+    async readWithCount(options: QueryOptions<T> = {}): Promise<[T[], number]> {
+        const findOptions: FindManyOptions<T> = {
+            where: options.where,
+            order: options.order,
+            take: options.take,
+            skip: options.skip,
+            select: options.select,
+            relations: options.relations
+        };
+
+        const cleanedOptions = this.cleanFindOptions(findOptions);
+        return this.repository.findAndCount(cleanedOptions);
     }
 
     async update(
-        conditions: FindOptionsWhere<T> | T | T[],
+        options: QueryOptions<T> = {},
         updateData: DeepPartial<T>
     ): Promise<T[]> {
-        const where = await this.getWhereConditions(conditions);
-        const entities = await this.read(where);
+        const entities = await this.read(options);
+        if (entities.length === 0) {
+            return [];
+        }
+
         const updatedEntities = entities.map(entity => ({
             ...entity,
             ...updateData
         }));
         await this.repository.save(updatedEntities);
-        return this.read(where);
+        return this.read(options);
     }
 
-    async delete(conditions: FindOptionsWhere<T> | T | T[]): Promise<void> {
+    async delete(conditions: FindOptionsWhere<T> | T | T[]): Promise<number> {
         const where = await this.getWhereConditions(conditions);
-        await this.repository.delete(where);
+        const result = await this.repository.delete(where);
+        return result.affected || 0;
     }
 }

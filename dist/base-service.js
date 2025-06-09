@@ -18,25 +18,66 @@ export class BaseService {
         }
         return conditions;
     }
+    // Утилитарная функция для удаления undefined значений
+    cleanFindOptions(options) {
+        const cleaned = {};
+        Object.keys(options).forEach(key => {
+            if (options[key] !== undefined) {
+                cleaned[key] = options[key];
+            }
+        });
+        return cleaned;
+    }
     async create(data) {
         const entity = this.repository.create(data);
         return await this.repository.save(entity);
     }
-    async read(where) {
-        return this.repository.find({ where });
+    // Универсальный метод чтения
+    async read(options = {}) {
+        const findOptions = {
+            where: options.where,
+            order: options.order,
+            take: options.take,
+            skip: options.skip,
+            select: options.select,
+            relations: options.relations
+        };
+        const cleanedOptions = this.cleanFindOptions(findOptions);
+        return this.repository.find(cleanedOptions);
     }
-    async update(conditions, updateData) {
-        const where = await this.getWhereConditions(conditions);
-        const entities = await this.read(where);
+    // Удобный метод для получения одной записи
+    async readOne(options = {}) {
+        const results = await this.read({ ...options, take: 1 });
+        return results[0] || null;
+    }
+    // Метод с подсчетом для пагинации
+    async readWithCount(options = {}) {
+        const findOptions = {
+            where: options.where,
+            order: options.order,
+            take: options.take,
+            skip: options.skip,
+            select: options.select,
+            relations: options.relations
+        };
+        const cleanedOptions = this.cleanFindOptions(findOptions);
+        return this.repository.findAndCount(cleanedOptions);
+    }
+    async update(options = {}, updateData) {
+        const entities = await this.read(options);
+        if (entities.length === 0) {
+            return [];
+        }
         const updatedEntities = entities.map(entity => ({
             ...entity,
             ...updateData
         }));
         await this.repository.save(updatedEntities);
-        return this.read(where);
+        return this.read(options);
     }
     async delete(conditions) {
         const where = await this.getWhereConditions(conditions);
-        await this.repository.delete(where);
+        const result = await this.repository.delete(where);
+        return result.affected || 0;
     }
 }
