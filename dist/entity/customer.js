@@ -28,14 +28,12 @@ let Customer = class Customer {
     }
 };
 __decorate([
-    Field(() => ID) // GraphQL поле с типом ID
-    ,
+    Field(() => ID),
     PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
 ], Customer.prototype, "id", void 0);
 __decorate([
-    Field() // Обязательное поле GraphQL String
-    ,
+    Field(),
     Column({
         name: 'full_name',
         type: 'varchar',
@@ -44,8 +42,7 @@ __decorate([
     __metadata("design:type", String)
 ], Customer.prototype, "fullName", void 0);
 __decorate([
-    Field({ nullable: true }) // Необязательное поле GraphQL String или null
-    ,
+    Field({ nullable: true }),
     Column({
         name: 'phone_number',
         type: 'varchar',
@@ -82,8 +79,7 @@ __decorate([
     __metadata("design:type", String)
 ], Customer.prototype, "notes", void 0);
 Customer = __decorate([
-    ObjectType() // Говорим, что это GraphQL тип
-    ,
+    ObjectType(),
     Entity({ name: 'customers' }),
     __metadata("design:paramtypes", [Object])
 ], Customer);

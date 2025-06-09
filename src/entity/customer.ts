@@ -2,14 +2,14 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import 'reflect-metadata';
 import { ObjectType, Field, ID } from '@nestjs/graphql';
 
-@ObjectType() // Говорим, что это GraphQL тип
+@ObjectType()
 @Entity({ name: 'customers' })
 export class Customer {
-  @Field(() => ID) // GraphQL поле с типом ID
+  @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Field() // Обязательное поле GraphQL String
+  @Field()
   @Column({
     name: 'full_name',
     type: 'varchar',
@@ -17,7 +17,7 @@ export class Customer {
   })
   fullName!: string;
 
-  @Field({ nullable: true }) // Необязательное поле GraphQL String или null
+  @Field({ nullable: true })
   @Column({
     name: 'phone_number',
     type: 'varchar',
