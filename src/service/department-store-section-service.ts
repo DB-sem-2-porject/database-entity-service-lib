@@ -3,7 +3,9 @@ import { TradingPoint } from '../entity/trading-point.js';
 import { TradingPointType } from '../entity/enum/trading-point-type.js';
 import { BaseService } from '../base-service.js';
 import { DataSource, DeepPartial, Repository } from 'typeorm';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class DepartmentStoreSectionService extends BaseService<DepartmentStoreSection> {
   private tradingPointsRepository: Repository<TradingPoint>;
 
