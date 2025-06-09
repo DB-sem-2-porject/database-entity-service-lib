@@ -13,7 +13,7 @@ import { Customer } from './customer.js';
 import { Employee } from './employee.js';
 import { TradingPoint } from './trading-point.js';
 import { PaymentMethod } from './enum/payment-method.js';
-import { Field, ID, ObjectType } from "type-graphql";
+import { Field, ID, ObjectType } from "@nestjs/graphql";
 let Sale = class Sale {
     id;
     tradingPointId;

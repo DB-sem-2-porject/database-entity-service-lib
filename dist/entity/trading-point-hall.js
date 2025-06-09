@@ -11,7 +11,7 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, } from '
 import 'reflect-metadata';
 import { TradingPoint } from './trading-point.js';
 import { DepartmentStoreSection } from './department-store-section.js';
-import { Field, ID, ObjectType } from "type-graphql";
+import { Field, ID, ObjectType } from "@nestjs/graphql";
 let TradingPointHall = class TradingPointHall {
     id;
     tradingPoint;

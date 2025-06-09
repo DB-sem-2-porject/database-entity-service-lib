@@ -2,7 +2,7 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Check } 
 import 'reflect-metadata';
 import { Order } from './order.js';
 import { ProductDirectory } from './product-directory.js';
-import {Field, ID, ObjectType} from "type-graphql";
+import {Field, ID, ObjectType} from "@nestjs/graphql";
 
 @ObjectType()
 @Entity({ name: 'order_items' })

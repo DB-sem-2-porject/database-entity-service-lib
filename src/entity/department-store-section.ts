@@ -8,7 +8,7 @@ import {
 import 'reflect-metadata';
 import { TradingPoint } from './trading-point.js';
 import { Employee } from './employee.js';
-import {Field, ID, ObjectType} from "type-graphql";
+import {Field, ID, ObjectType} from "@nestjs/graphql";
 
 @ObjectType()
 @Entity({ name: 'department_store_sections' })

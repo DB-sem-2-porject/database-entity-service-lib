@@ -8,7 +8,7 @@ import {
 import 'reflect-metadata';
 import { EMPLOYEE_ROLE_ENUM_NAME, EmployeeRole } from './enum/employee-role.js';
 import { TradingPoint } from './trading-point.js';
-import {Field, ID, ObjectType} from "type-graphql";
+import {Field, ID, ObjectType} from "@nestjs/graphql";
 
 @ObjectType()
 @Entity({ name: 'employees' })

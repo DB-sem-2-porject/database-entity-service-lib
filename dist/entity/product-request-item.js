@@ -11,7 +11,7 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 't
 import 'reflect-metadata';
 import { ProductRequest } from './product-request.js';
 import { ProductDirectory } from './product-directory.js';
-import { Field, ID, ObjectType } from "type-graphql";
+import { Field, ID, ObjectType } from "@nestjs/graphql";
 let ProductRequestItem = class ProductRequestItem {
     id;
     request;

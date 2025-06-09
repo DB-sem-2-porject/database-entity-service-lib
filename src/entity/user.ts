@@ -6,7 +6,7 @@ import {
     UpdateDateColumn,
 } from 'typeorm';
 import "reflect-metadata"
-import {Field, ID, ObjectType} from "type-graphql";
+import {Field, ID, ObjectType} from "@nestjs/graphql";
 
 @ObjectType()
 @Entity({ name: 'users' })

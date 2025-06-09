@@ -2,7 +2,7 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 't
 import 'reflect-metadata';
 import { Provider } from './provider.js';
 import { ORDER_STATUS_ENUM_NAME, OrderStatus } from './enum/order-status.js';
-import {Field, ID, ObjectType} from "type-graphql";
+import {Field, ID, ObjectType} from "@nestjs/graphql";
 
 @ObjectType()
 @Entity({ name: 'orders' })

@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Check } from 'typeorm';
 import 'reflect-metadata';
 import { Employee } from './employee.js';
-import { Field, ID, ObjectType } from "type-graphql";
+import { Field, ID, ObjectType } from "@nestjs/graphql";
 let Salary = class Salary {
     id;
     employeeId;

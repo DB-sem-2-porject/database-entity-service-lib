@@ -11,7 +11,7 @@ import { Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn, } from 'typeorm'
 import 'reflect-metadata';
 import { Employee } from './employee.js';
 import { TradingPointHall } from './trading-point-hall.js';
-import { Field, ID, ObjectType } from "type-graphql";
+import { Field, ID, ObjectType } from "@nestjs/graphql";
 let HallAssignment = class HallAssignment {
     id;
     employeeId;

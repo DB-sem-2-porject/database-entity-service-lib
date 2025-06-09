@@ -4,7 +4,7 @@ import { TradingPoint } from './trading-point.js';
 import { ProductDirectory } from './product-directory.js';
 import { Employee } from './employee.js';
 import {TransferStatus} from './enum/transfer-status.js';
-import {Field, ID, ObjectType} from "type-graphql";
+import {Field, ID, ObjectType} from "@nestjs/graphql";
 
 @ObjectType()
 @Entity({ name: 'inventory_transfers' })

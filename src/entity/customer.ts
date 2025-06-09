@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import 'reflect-metadata';
-import { ObjectType, Field, ID } from 'type-graphql';
+import { ObjectType, Field, ID } from '@nestjs/graphql';
 
 @ObjectType() // Говорим, что это GraphQL тип
 @Entity({ name: 'customers' })

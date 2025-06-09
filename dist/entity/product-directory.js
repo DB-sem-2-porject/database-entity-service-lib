@@ -11,7 +11,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import 'reflect-metadata';
 import { PRODUCT_CATEGORY_ENUM_NAME, ProductCategory } from './enum/product-category.js';
 import { MEASUREMENT_TYPE_ENUM_NAME, MeasurementType } from './enum/measurement-type.js';
-import { Field, ID, ObjectType } from "type-graphql";
+import { Field, ID, ObjectType } from "@nestjs/graphql";
 let ProductDirectory = class ProductDirectory {
     id;
     name;

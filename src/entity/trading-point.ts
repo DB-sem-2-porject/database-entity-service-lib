@@ -5,7 +5,7 @@ import {
 } from 'typeorm';
 import 'reflect-metadata';
 import { TradingPointType } from './enum/trading-point-type.js';
-import {Field, ID, ObjectType} from "type-graphql";
+import {Field, ID, ObjectType} from "@nestjs/graphql";
 
 @ObjectType()
 @Entity({ name: 'trading_points' })
