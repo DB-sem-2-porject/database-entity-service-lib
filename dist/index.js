@@ -44,6 +44,7 @@ export { SaleService } from './service/sale-service.js';
 export { TradingPointHallService } from './service/trading-point-hall-service.js';
 export { TradingPointService } from './service/trading-point-service.js';
 export { UserService } from './service/user-service.js';
+export { BaseService } from './base-service.js';
 // const dataSource = new DataSource({
 //     // required DataSource configuration
 //     type: "postgres", // or your database type
