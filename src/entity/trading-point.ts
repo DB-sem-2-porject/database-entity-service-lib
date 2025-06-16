@@ -5,7 +5,7 @@ import {
 } from 'typeorm';
 import 'reflect-metadata';
 import { TradingPointType } from './enum/trading-point-type.js';
-import {Field, ID, ObjectType} from "@nestjs/graphql";
+import {Field, ID, ObjectType, GraphQLISODateTime} from "@nestjs/graphql";
 
 @ObjectType()
 @Entity({ name: 'trading_points' })
@@ -80,7 +80,7 @@ export class TradingPoint {
     })
     floorsCount!: number;
 
-    @Field()
+    @Field(() => GraphQLISODateTime, { nullable: true })
     @Column({
         name: 'opening_date',
         type: 'date',
