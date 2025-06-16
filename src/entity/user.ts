@@ -53,7 +53,7 @@ export class User {
     @CreateDateColumn({
         name: 'registration_date',
         type: 'timestamp',
-        default: () => 'now()'
+        default: () => 'CURRENT_DATE'
     })
     registrationDate!: Date;
 

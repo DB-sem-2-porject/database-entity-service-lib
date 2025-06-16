@@ -24,7 +24,7 @@ export class Order {
     name: 'order_date',
     type: 'timestamp',
     nullable: false,
-    default: () => 'now()'
+    default: () => 'CURRENT_DATE'
   })
   orderDate?: Date;
 

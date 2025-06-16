@@ -33,7 +33,7 @@ export class ProductRequest {
     name: 'request_date',
     type: 'timestamp',
     nullable: false,
-    default: () => 'now()'
+    default: () => 'CURRENT_DATE'
   })
   requestDate?: Date;
 

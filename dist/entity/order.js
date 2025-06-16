@@ -48,7 +48,7 @@ __decorate([
         name: 'order_date',
         type: 'timestamp',
         nullable: false,
-        default: () => 'now()'
+        default: () => 'CURRENT_DATE'
     }),
     __metadata("design:type", Date)
 ], Order.prototype, "orderDate", void 0);

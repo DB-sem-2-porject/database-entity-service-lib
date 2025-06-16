@@ -70,7 +70,7 @@ export class InventoryTransfer {
   @Column({
     name: 'transfer_date',
     type: 'timestamp',
-    default: () => 'now()'
+    default: () => 'CURRENT_DATE'
   })
   transferDate!: Date;
 

@@ -123,7 +123,7 @@ __decorate([
     Column({
         name: 'opening_date',
         type: 'date',
-        default: () => 'now()'
+        default: () => 'CURRENT_DATE'
     }),
     __metadata("design:type", Date)
 ], TradingPoint.prototype, "openingDate", void 0);

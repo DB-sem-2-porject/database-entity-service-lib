@@ -81,7 +81,7 @@ __decorate([
     Column({
         name: 'created_at',
         type: 'date',
-        default: () => 'now()'
+        default: () => 'CURRENT_DATE'
     }),
     __metadata("design:type", Date)
 ], ProductDirectory.prototype, "createdAt", void 0);

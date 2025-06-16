@@ -51,7 +51,7 @@ export class ProductDirectory {
   @Column({
     name: 'created_at',
     type: 'date',
-    default: () => 'now()'
+    default: () => 'CURRENT_DATE'
   })
   createdAt!: Date;
 

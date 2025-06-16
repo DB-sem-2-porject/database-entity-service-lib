@@ -84,7 +84,7 @@ export class TradingPoint {
     @Column({
         name: 'opening_date',
         type: 'date',
-        default: () => 'now()'
+        default: () => 'CURRENT_DATE'
     })
     openingDate!: Date;
 

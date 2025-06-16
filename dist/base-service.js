@@ -18,7 +18,6 @@ export class BaseService {
         }
         return conditions;
     }
-    // Утилитарная функция для удаления undefined значений
     cleanFindOptions(options) {
         const cleaned = {};
         Object.keys(options).forEach(key => {
@@ -32,7 +31,6 @@ export class BaseService {
         const entity = this.repository.create(data);
         return await this.repository.save(entity);
     }
-    // Универсальный метод чтения
     async read(options = {}) {
         const findOptions = {
             where: options.where,
@@ -45,12 +43,10 @@ export class BaseService {
         const cleanedOptions = this.cleanFindOptions(findOptions);
         return this.repository.find(cleanedOptions);
     }
-    // Удобный метод для получения одной записи
     async readOne(options = {}) {
         const results = await this.read({ ...options, take: 1 });
         return results[0] || null;
     }
-    // Метод с подсчетом для пагинации
     async readWithCount(options = {}) {
         const findOptions = {
             where: options.where,

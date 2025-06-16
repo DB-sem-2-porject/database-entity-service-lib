@@ -112,7 +112,7 @@ __decorate([
     Column({
         name: 'transfer_date',
         type: 'timestamp',
-        default: () => 'now()'
+        default: () => 'CURRENT_DATE'
     }),
     __metadata("design:type", Date)
 ], InventoryTransfer.prototype, "transferDate", void 0);

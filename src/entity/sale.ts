@@ -61,7 +61,7 @@ export class Sale {
         name: 'sale_date',
         type: 'timestamp',
         nullable: false,
-        default: () => 'now()'
+        default: () => 'CURRENT_DATE'
     })
     saleDate!: Date;
 

@@ -74,7 +74,7 @@ __decorate([
     CreateDateColumn({
         name: 'registration_date',
         type: 'timestamp',
-        default: () => 'now()'
+        default: () => 'CURRENT_DATE'
     }),
     __metadata("design:type", Date)
 ], User.prototype, "registrationDate", void 0);

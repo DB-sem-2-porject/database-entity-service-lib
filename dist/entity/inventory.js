@@ -92,7 +92,7 @@ __decorate([
     Column({
         name: 'last_update',
         type: 'timestamp',
-        default: () => 'now()'
+        default: () => 'CURRENT_DATE'
     }),
     __metadata("design:type", Date)
 ], Inventory.prototype, "lastUpdate", void 0);

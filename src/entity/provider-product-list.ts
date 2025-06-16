@@ -51,7 +51,7 @@ export class ProviderProductList {
   @Field()
   @Column({
     type: 'timestamp',
-    default: () => 'now()'
+    default: () => 'CURRENT_DATE'
   })
   lastUpdate!: Date;
 

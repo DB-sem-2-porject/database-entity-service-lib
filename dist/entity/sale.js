@@ -96,7 +96,7 @@ __decorate([
         name: 'sale_date',
         type: 'timestamp',
         nullable: false,
-        default: () => 'now()'
+        default: () => 'CURRENT_DATE'
     }),
     __metadata("design:type", Date)
 ], Sale.prototype, "saleDate", void 0);

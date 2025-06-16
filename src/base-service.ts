@@ -9,7 +9,6 @@ import {
     FindOptionsSelect
 } from "typeorm";
 
-// Интерфейс для опций запроса
 export interface QueryOptions<T> {
     where?: FindOptionsWhere<T> | FindOptionsWhere<T>[];
     order?: FindOptionsOrder<T>;
@@ -43,7 +42,6 @@ export abstract class BaseService<T extends { id: number }> {
         return conditions;
     }
 
-    // Утилитарная функция для удаления undefined значений
     private cleanFindOptions<TOptions extends Record<string, any>>(options: TOptions): TOptions {
         const cleaned = {} as TOptions;
 
@@ -61,7 +59,6 @@ export abstract class BaseService<T extends { id: number }> {
         return await this.repository.save(entity);
     }
 
-    // Универсальный метод чтения
     async read(options: QueryOptions<T> = {}): Promise<T[]> {
         const findOptions: FindManyOptions<T> = {
             where: options.where,
@@ -76,13 +73,11 @@ export abstract class BaseService<T extends { id: number }> {
         return this.repository.find(cleanedOptions);
     }
 
-    // Удобный метод для получения одной записи
     async readOne(options: QueryOptions<T> = {}): Promise<T | null> {
         const results = await this.read({ ...options, take: 1 });
         return results[0] || null;
     }
 
-    // Метод с подсчетом для пагинации
     async readWithCount(options: QueryOptions<T> = {}): Promise<[T[], number]> {
         const findOptions: FindManyOptions<T> = {
             where: options.where,

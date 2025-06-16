@@ -30,7 +30,7 @@ export class Customer {
     name: 'registration_date',
     type: 'timestamp',
     nullable: false,
-    default: () => 'now()'
+    default: () => 'CURRENT_DATE'
   })
   registrationDate?: string;
 

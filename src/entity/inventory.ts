@@ -60,7 +60,7 @@ export class Inventory {
   @Column({
     name: 'last_update',
     type: 'timestamp',
-    default: () => 'now()'
+    default: () => 'CURRENT_DATE'
   })
   lastUpdate!: Date;
   

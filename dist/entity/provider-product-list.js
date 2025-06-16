@@ -83,7 +83,7 @@ __decorate([
     Field(),
     Column({
         type: 'timestamp',
-        default: () => 'now()'
+        default: () => 'CURRENT_DATE'
     }),
     __metadata("design:type", Date)
 ], ProviderProductList.prototype, "lastUpdate", void 0);

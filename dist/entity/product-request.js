@@ -58,7 +58,7 @@ __decorate([
         name: 'request_date',
         type: 'timestamp',
         nullable: false,
-        default: () => 'now()'
+        default: () => 'CURRENT_DATE'
     }),
     __metadata("design:type", Date)
 ], ProductRequest.prototype, "requestDate", void 0);

@@ -56,7 +56,7 @@ __decorate([
         name: 'registration_date',
         type: 'timestamp',
         nullable: false,
-        default: () => 'now()'
+        default: () => 'CURRENT_DATE'
     }),
     __metadata("design:type", String)
 ], Customer.prototype, "registrationDate", void 0);
